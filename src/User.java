@@ -8,6 +8,7 @@ public class User {
     //TODO: rework attribute vector to be HashMap<String,Double>, where each string is an attribute and each double is its value
     private static ArrayList<Double> userAttributes;
     private static ArrayList<String> preferredMakes;
+    private static ArrayList<String> preferredBodyTypes;
 
     public User(ArrayList<Double> userAttributes, ArrayList<String> preferredMakes) {
         this.userAttributes = userAttributes;

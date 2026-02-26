@@ -45,7 +45,7 @@ public class User {
         for(int i = 0; i < 3; i++) {
             System.out.println("Input value for attribute " + (i+1) + ":");
             double attributeInput = scanner.nextDouble();
-            userAttributes.addLast(attributeInput);
+            userAttributes.add(attributeInput);
         }
 
         ArrayList<String> preferredMakes = new ArrayList<>();

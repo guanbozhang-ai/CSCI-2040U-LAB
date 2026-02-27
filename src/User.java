@@ -1,63 +1,88 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class User {
-    public static final double ATTRIBUTE_MAX = 5;
-    //TODO: rework attribute vector to be HashMap<String,Double>, where each string is an attribute and each double is its value
-    private static ArrayList<Double> userAttributes;
-    private static ArrayList<String> preferredMakes;
 
-    public User(ArrayList<Double> userAttributes, ArrayList<String> preferredMakes) {
-        this.userAttributes = userAttributes;
-        this.preferredMakes = preferredMakes;
+    // Each User has their own list of preference values
+    private ArrayList<Double> userAttributes;
+    // Constructor: create a User with given attributes
+    public User(ArrayList<Double> userAttributes) {
+        this.userAttributes = userAttributes; // Save user preferences
+    }
+    // Getter: return the user's attributes
+    public ArrayList<Double> getUserAttributes() {
+        return userAttributes; // Give back the list
     }
 
-    public static double match(Car car) {
-        ArrayList<Double> carAttributes = car.getCarAttributes();
-        double distance = 0;
-        if (!preferredMakes.contains(car.getMake())){
-            distance += Math.pow(ATTRIBUTE_MAX, 2);
-        }
-        for(int i = 0; i < userAttributes.size(); i++) {
-            distance += Math.pow( (userAttributes.get(i) - carAttributes.get(i)) , 2);
-
-        }
-        return Math.sqrt(distance);
-    }
-
-    //TODO: create a new class to actually run the program, this main function is just for testing purposes
     public static void main(String[] args) {
-        ArrayList<Double> attributes1 = new ArrayList<>(Arrays.asList(1.0,2.4,3.2));
-        ArrayList<Double> attributes2 = new ArrayList<>(Arrays.asList(2.0,0.4,2.3));
-        ArrayList<Double> attributes3 = new ArrayList<>(Arrays.asList(0.2,0.2,0.9));
-        Car car1 = new Car(attributes1, "Toyota", "Corolla");
-        Car car2 = new Car(attributes2, "Honda", "Civic");
-        Car car3 = new Car(attributes3, "Lexus", "LFA");
-        CarStock carStock = new CarStock();
-        carStock.addCar(car1);
-        carStock.addCar(car2);
-        carStock.addCar(car3);
 
+        // Create / load car inventory from file cars.json
+        CarStock carStock = new CarStock("cars.json");
+
+        // If there are no cars saved, add default cars
+        if (carStock.getAllCars().isEmpty()) {
+
+            // Add Toyota Corolla with 3 attributes
+            carStock.addCar(new Car(
+                    new ArrayList<>(Arrays.asList(1.0, 2.4, 3.2)),
+                    "Toyota",
+                    "Corolla"
+            ));
+
+            // Add Honda Civic
+            carStock.addCar(new Car(
+                    new ArrayList<>(Arrays.asList(2.0, 0.4, 2.3)),
+                    "Honda",
+                    "Civic"
+            ));
+
+            // Add Lexus LFA
+            carStock.addCar(new Car(
+                    new ArrayList<>(Arrays.asList(0.2, 0.2, 0.9)),
+                    "Lexus",
+                    "LFA"
+            ));
+        }
+
+        carStock.printInventory();
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nWould you like to add a new car? (y/n)");
+
+        if (scanner.next().equalsIgnoreCase("y")) {
+
+            System.out.print("Make: ");
+            String make = scanner.next();
+
+            System.out.print("Model: ");
+            String model = scanner.next();
+
+            ArrayList<Double> attrs = new ArrayList<>();
+
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Attribute " + (i + 1) + ": ");
+                attrs.add(scanner.nextDouble());
+            }
+
+            carStock.addCar(new Car(attrs, make, model));
+            System.out.println("Car saved to cars.json.");
+        }
+
+        System.out.println("\nEnter your preferences (3 values):");
+
         ArrayList<Double> userAttributes = new ArrayList<>();
-        for(int i = 0; i < 3; i++) {
-            System.out.println("Input value for attribute " + (i+1) + ":");
-            double attributeInput = scanner.nextDouble();
-            userAttributes.addLast(attributeInput);
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Preference " + (i + 1) + ": ");
+            userAttributes.add(scanner.nextDouble());
         }
 
-        ArrayList<String> preferredMakes = new ArrayList<>();
-        String makeInput = null;
-        while(!Objects.equals(makeInput, "0")){
-            System.out.println("Input preferred make (0 to quit):");
-            makeInput = scanner.next();
-            preferredMakes.add(makeInput);
-            //TODO: make a list of all possible makes in Car class
-        }
-        User user = new User(userAttributes, preferredMakes);
+        User user = new User(userAttributes);
 
-        System.out.println("Best match for this user: " + carStock.findBestMatch(user));
+        // Find the best matching car
+        Car best = carStock.findBestMatch(user.getUserAttributes());
+
+        System.out.println("\nBest match: " + best);
     }
 }

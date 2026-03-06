@@ -2,35 +2,41 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        HashMap<String, Double> attributes1 = new HashMap<>();
-        HashMap<String, Double> attributes2 = new HashMap<>();
-        HashMap<String, Double> attributes3 = new HashMap<>();
-
-        attributes1.put("cost", 2.0);
-        attributes1.put("sportiness", 1.5);
-        attributes1.put("mileage", 4.0);
-        attributes1.put("seating", 3.0);
-
-        attributes2.put("cost", 2.5);
-        attributes2.put("sportiness", 2.5);
-        attributes2.put("mileage", 3.0);
-        attributes2.put("seating", 2.5);
-
-        attributes3.put("cost", 5.0);
-        attributes3.put("sportiness", 5.0);
-        attributes3.put("mileage", 1.0);
-        attributes3.put("seating", 0.0);
-
-        Car car1 = new Car(attributes1, "Toyota", "Corolla", "Sedan");
-        Car car2 = new Car(attributes2, "Honda", "Civic", "Hatchback");
-        Car car3 = new Car(attributes3, "Lexus", "LFA", "Sports");
-        CarStock carStock = new CarStock();
-        carStock.addCar(car1);
-        carStock.addCar(car2);
-        carStock.addCar(car3);
-
         Scanner scanner = new Scanner(System.in);
+        CarStock carStock = new CarStock("src/main/resources/cars.json");
         User user = new User();
+        int carSelection = 1;
+
+        while (carSelection != 0) {
+            System.out.println("Add new cars to storage. Any number to continue, 0 to quit.");
+            carSelection = scanner.nextInt();
+            if(carSelection != 0) {
+                System.out.print("Make: ");
+                String make = scanner.next();
+
+                System.out.print("Model: ");
+                String model = scanner.next();
+
+                System.out.print("Body Type: ");
+                String bodyType = scanner.next();
+
+                System.out.print("Horsepower: ");
+                int horsepower = scanner.nextInt();
+
+                System.out.print("Price: ");
+                int price = scanner.nextInt();
+
+                System.out.print("Mileage: ");
+                int mileage = scanner.nextInt();
+
+                System.out.print("Seating: ");
+                int seating = scanner.nextInt();
+
+                carStock.addCar(new Car(make, model, bodyType, horsepower, price, mileage, seating));
+            }
+        }
+
+        carStock.printInventory();
 
         for(String attribute : UserAttributeMap.ATTRIBUTE_NAMES) {
             System.out.println("Input preferred value for attribute " + attribute + ": ");

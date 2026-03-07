@@ -1,0 +1,5 @@
+[
+  {"make":"Toyota","model":"Corolla","bodyType":"Sedan","horsepower":"150","price":"15000","mileage":"150000","seating":"5",},
+  {"make":"Lexus","model":"LFA","bodyType":"Coupe","horsepower":"700","price":"300000","mileage":"2000","seating":"2",},
+  {"make":"BMW","model":"M4","bodyType":"Coupe","horsepower":"400","price":"100000","mileage":"30000","seating":"4",}
+]

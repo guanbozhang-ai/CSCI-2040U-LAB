@@ -1,6 +1,17 @@
 # Compiled class file
 *.class
 
+#Maven/Gradle
+target/
+build/
+
+#IntelliJ
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
 # Log file
 *.log
 

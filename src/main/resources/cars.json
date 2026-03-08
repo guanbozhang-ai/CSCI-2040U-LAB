@@ -1,0 +1,5 @@
+[
+  {"make":"Toyota","model":"Corolla","bodyType":"Sedan","attributes":{"cost":2.0,"sportiness":1.5,"seating":3.0,"mileage":4.0}},
+  {"make":"Honda","model":"Civic","bodyType":"Hatchback","attributes":{"cost":2.5,"sportiness":2.5,"seating":2.5,"mileage":3.0}},
+  {"make":"Lexus","model":"LFA","bodyType":"Sports","attributes":{"cost":5.0,"sportiness":5.0,"seating":0.0,"mileage":1.0}}
+]

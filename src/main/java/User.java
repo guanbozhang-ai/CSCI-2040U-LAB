@@ -6,13 +6,9 @@ public class User {
     private static ArrayList<String> preferredMakes;
     private static ArrayList<String> preferredBodyTypes;
 
-    public User(UserAttributeMap userAttributes, ArrayList<String> preferredMakes,
-                ArrayList<String> preferredBodyTypes) {
-        this.userAttributes = userAttributes;
-        this.preferredMakes = preferredMakes;
-        this.preferredBodyTypes = preferredBodyTypes;
-    }
-
+    /**
+     * Initializes a new User object using the survey methods in the User class
+     */
     public User() {
         userSurvey();
         preferredMakesSurvey();
@@ -31,6 +27,12 @@ public class User {
         preferredBodyTypes.add(bodyType);
     }
 
+    /**
+     * Determines the Euclidean distance between the attribute vectors of the User
+     * and a given Car, taking into account the User's preferred makes and body types
+     * @param car The Car to be matched to the User
+     * @return A double containing the Euclidean distance between the attribute vectors
+     */
     public static double match(Car car) {
         HashMap<String, Double> carAttributes = car.getCarAttributes();
         double distance = 0;
@@ -47,6 +49,9 @@ public class User {
         return Math.sqrt(distance);
     }
 
+    /**
+     * Initializes the User's UserAttributeMap (attribute vector) using a placeholder survey
+     */
     public void userSurvey() {
         userAttributes = new UserAttributeMap();
         int currentInput;
@@ -83,6 +88,9 @@ public class User {
         userAttributes.addAttribute("seating", currentValue, currentImportance);
     }
 
+    /**
+     * Allows a user to input their preferred makes
+     */
     public void preferredMakesSurvey() {
         preferredMakes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -97,6 +105,9 @@ public class User {
         }
     }
 
+    /**
+     * Allows a user to input their preferred body types
+     */
     public void preferredBodyTypesSurvey() {
         preferredBodyTypes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);

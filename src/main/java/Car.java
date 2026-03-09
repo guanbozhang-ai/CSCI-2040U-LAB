@@ -14,6 +14,16 @@ public class Car {
     private int mileage;
     private int seating;
 
+    /**
+     * Initializes a full Car object
+     * @param make String, the make of the car
+     * @param model String, the model of the car
+     * @param bodyType String, the body type of the car
+     * @param horsepower int, the horsepower of the car
+     * @param price int, the price of the car
+     * @param mileage int, the amount of km the car has been driven
+     * @param seating int, the amount of seats the car has
+     */
     public Car(String make, String model, String bodyType, int horsepower,
                int price, int mileage, int seating) {
         this.make = make;
@@ -26,6 +36,9 @@ public class Car {
         setCarAttributes();
     }
 
+    /**
+     * Initializes the attribute vector of the car. Runs on construction
+     */
     private void setCarAttributes() {
         // Cost: maxes out at $100k with an ATTRIBUTE_MAX of 5
         setAttribute("cost", Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) price) / 20000.0));
@@ -38,9 +51,11 @@ public class Car {
                 UserAttributeMap.ATTRIBUTE_MAX * ((double) seating) / 8.0));
     }
 
+
     public HashMap<String, Double> getCarAttributes() {
         return carAttributes;
     }
+
 
     public String getMake() {
         return make;
@@ -75,7 +90,10 @@ public class Car {
                 ", $" + price + ", " + horsepower + " HP, " + mileage + " km";
     }
 
-    // Convert object to JSON text (Serialization)
+    /**
+     * Converts a Car object to a String in .json format
+     * @return A String representing the Car
+     */
     public String toJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
@@ -90,7 +108,11 @@ public class Car {
         return sb.toString(); // Return JSON string
     }
 
-    // Convert JSON text back into Car object (Deserialization)
+    /**
+     * Converts a given String in .json format to a Car object
+     * @param json A String in .json format representing a Car
+     * @return The represented Car object
+     */
     public static Car fromJson(String json) {
         json = json.trim(); // Remove extra spaces
 
@@ -105,7 +127,12 @@ public class Car {
         return new Car(make, model, bodyType, horsepower, price, mileage, seating); // Create new Car object
     }
 
-    // Helper method extract value of a key from JSON
+    /**
+     * Extracts the value associated with a key in a given .json format String
+     * @param json String containing the .json information
+     * @param key The String key
+     * @return The String value associated with the given key
+     */
     private static String extractString(String json, String key) {
 
         // Create pattern like: "make":"

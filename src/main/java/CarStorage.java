@@ -4,22 +4,24 @@ import java.util.ArrayList;
 
 /**
  * Handles saving and loading cars from a JSON file.
- *
- * File format (cars.json):
- * [
- *   {"make":"Toyota","model":"Corolla","attributes":[1.0,2.4,3.2]},
- *   {"make":"Honda","model":"Civic","attributes":[2.0,0.4,2.3]}
- * ]
+ * Default relative filepath: src/main/resources/cars.json
  */
 public class CarStorage {
 
     private final String filePath; // Path to cars.json file
 
+    /**
+     * Initializes a CarStorage object based on a given file path
+     * @param filePath The path of the .json file being used for storage
+     */
     public CarStorage(String filePath) {
         this.filePath = filePath; // Save file path
     }
 
-    // Load all cars from the JSON file
+    /**
+     * Loads all Car objects stored in the .json file
+     * @return An ArrayList containing all Car objects stored in the .json file
+     */
     public ArrayList<Car> load() {
 
         ArrayList<Car> cars = new ArrayList<>();
@@ -63,7 +65,11 @@ public class CarStorage {
         return cars; // Return loaded cars
     }
 
-    // Save list of cars to file overwrite old content
+    /**
+     * Saves all currently stored Car objects to the .json file, overwriting the old file
+     * (Note - may be inefficient later on)
+     * @param cars An ArrayList of all Car objects to be saved
+     */
     public void save(ArrayList<Car> cars) {
 
         StringBuilder sb = new StringBuilder(); // Build JSON text
@@ -92,7 +98,10 @@ public class CarStorage {
         }
     }
 
-    // Add one car (load → add → save)
+    /**
+     * Adds a Car to the .json file
+     * @param car The Car to be added to the file
+     */
     public void append(Car car) {
         ArrayList<Car> cars = load();
         cars.add(car);

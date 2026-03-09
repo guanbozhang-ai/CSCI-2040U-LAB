@@ -14,9 +14,9 @@ public class User {
     }
 
     public User() {
-        userAttributes = new UserAttributeMap();
-        preferredMakes = new ArrayList<>();
-        preferredBodyTypes = new ArrayList<>();
+        userSurvey();
+        preferredMakesSurvey();
+        preferredBodyTypesSurvey();
     }
 
     public void addAttribute(String name, Double value, Double importance) {
@@ -47,4 +47,67 @@ public class User {
         return Math.sqrt(distance);
     }
 
+    public void userSurvey() {
+        userAttributes = new UserAttributeMap();
+        int currentInput;
+        double currentValue;
+        double currentImportance;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("What is your ideal price point for your car?");
+        currentInput = scanner.nextInt();
+        currentValue = Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) currentInput) / 20000.0);
+        System.out.println("On a scale of 0-5, how important is it that your car be near this price?");
+        currentImportance = scanner.nextDouble();
+        userAttributes.addAttribute("cost", currentValue, currentImportance);
+
+        System.out.println("How much horsepower do you want your car to have?");
+        currentInput = scanner.nextInt();
+        currentValue = Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) currentInput) / 100.0);
+        System.out.println("On a scale of 0-5, how important is it that your car has about this much power?");
+        currentImportance = scanner.nextDouble();
+        userAttributes.addAttribute("sportiness", currentValue, currentImportance);
+
+        System.out.println("How many kilometres driven do you want your car to have?");
+        currentInput = scanner.nextInt();
+        currentValue = Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) currentInput) / 20000.0);
+        System.out.println("On a scale of 0-5, how important is it that your car has about this mileage?");
+        currentImportance = scanner.nextDouble();
+        userAttributes.addAttribute("mileage", currentValue, currentImportance);
+
+        System.out.println("How many seats would you like your car to have?");
+        currentInput = scanner.nextInt();
+        currentValue = Math.min(UserAttributeMap.ATTRIBUTE_MAX, UserAttributeMap.ATTRIBUTE_MAX * ((double) currentInput) / 8.0);
+        System.out.println("On a scale of 0-5, how important is it that your car has this many seats?");
+        currentImportance = scanner.nextDouble();
+        userAttributes.addAttribute("seating", currentValue, currentImportance);
+    }
+
+    public void preferredMakesSurvey() {
+        preferredMakes = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        String preferredMake = null;
+
+        while(!Objects.equals(preferredMake, "0")) {
+            System.out.println("Input one of your preferred makes (0 to exit):");
+            preferredMake = scanner.nextLine();
+            if (!Objects.equals(preferredMake, "0")) {
+                preferredMakes.add(preferredMake);
+            }
+        }
+    }
+
+    public void preferredBodyTypesSurvey() {
+        preferredBodyTypes = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        String preferredBodyType = null;
+
+        while(!Objects.equals(preferredBodyType, "0")) {
+            System.out.println("Input one of your preferred body types (0 to exit):");
+            preferredBodyType = scanner.nextLine();
+            if (!Objects.equals(preferredBodyType, "0")) {
+                preferredMakes.add(preferredBodyType);
+            }
+        }
+    }
 }

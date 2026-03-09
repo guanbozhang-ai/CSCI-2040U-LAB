@@ -1,6 +1,9 @@
 import java.util.HashMap;
 
 public class Car {
+    //TODO: make a list (initialize on runtime) of all possible makes
+    //TODO: make a list (initialize on runtime) of all possible bodyTypes in Car class
+
     public final String[] SPECIFICATIONS = {"make", "model", "bodyType"};
     private HashMap<String, Double> carAttributes = new HashMap<>();
     private String make;

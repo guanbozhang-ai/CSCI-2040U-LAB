@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Car Match Survey</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">GIT-IT-DONE</div>
+</nav>
+
+<section class="survey-container">
+
+    <h1>Smart Car Match Survey</h1>
+    <p>Answer a few questions to help us match the perfect car for you.</p>
+
+    <form id="surveyForm">
+
+        <h3>Price Preference</h3>
+
+        <label>Ideal price point ($)</label>
+        <input type="number" name="price">
+
+        <label>Importance (0-5)</label>
+        <input type="number" min="0" max="5" name="priceImportance">
+
+
+        <h3>Performance</h3>
+
+        <label>Desired horsepower</label>
+        <input type="number" name="horsepower">
+
+        <label>Importance (0-5)</label>
+        <input type="number" min="0" max="5" name="powerImportance">
+
+
+        <h3>Mileage</h3>
+
+        <label>Maximum kilometres driven</label>
+        <input type="number" name="mileage">
+
+        <label>Importance (0-5)</label>
+        <input type="number" min="0" max="5" name="mileageImportance">
+
+
+        <h3>Seating</h3>
+
+        <label>How many seats?</label>
+        <input type="number" name="seats">
+
+        <label>Importance (0-5)</label>
+        <input type="number" min="0" max="5" name="seatImportance">
+
+
+        <h3>Preferred Car Makes</h3>
+
+        <label>Select preferred brands</label>
+        <select name="makes" multiple>
+
+            <option>Toyota</option>
+            <option>Honda</option>
+            <option>BMW</option>
+            <option>Audi</option>
+            <option>Ford</option>
+
+        </select>
+
+
+        <h3>Preferred Body Type</h3>
+
+        <select name="bodyType">
+
+            <option>Sedan</option>
+            <option>SUV</option>
+            <option>Hatchback</option>
+            <option>Truck</option>
+            <option>Coupe</option>
+
+        </select>
+
+
+        <br><br>
+
+        <button type="submit" class="btn-primary">Find My Car</button>
+
+    </form>
+
+</section>
+
+<script src="js/surver.js"></script>
+
+</body>
+</html>

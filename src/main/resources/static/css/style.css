@@ -29,6 +29,10 @@ body {
 
 .hero-buttons {
     margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
@@ -64,4 +68,26 @@ body {
     padding: 20px;
     background-color: #111;
     color: white;
+}
+
+.survey-container{
+    max-width:600px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.question{
+    margin:25px 0;
+}
+
+.question label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    font-size:16px;
 }

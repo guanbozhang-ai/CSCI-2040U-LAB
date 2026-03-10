@@ -28,44 +28,42 @@
 
         <h3>Price Preference</h3>
 
-        <label>Ideal price point ($)</label>
-        <input type="number" name="price">
+        <label for="price">Ideal price point ($)</label>
+        <input type="number" id ="price" name="price">
 
-        <label>Importance (0-5)</label>
-        <input type="number" min="0" max="5" name="priceImportance">
+        <label for = "priceImportance">Importance (0-5)</label>
+        <input type="number" min="0" max="5" id = "priceImportance" name="priceImportance">
 
 
         <h3>Performance</h3>
 
-        <label>Desired horsepower</label>
-        <input type="number" name="horsepower">
+        <label for = "horsepower">Desired horsepower</label>
+        <input type="number" id = "horsepower" name="horsepower">
 
-        <label>Importance (0-5)</label>
-        <input type="number" min="0" max="5" name="powerImportance">
+        <label for = "powerImportance">Importance (0-5)</label>
+        <input type="number" min="0" max="5"  id= "powerImportance" name="powerImportance">
 
 
         <h3>Mileage</h3>
 
-        <label>Maximum kilometres driven</label>
-        <input type="number" name="mileage">
+        <label for="mileage" >Maximum kilometres driven</label>
+        <input type="number" id = "mileage" name="mileage">
 
-        <label>Importance (0-5)</label>
-        <input type="number" min="0" max="5" name="mileageImportance">
+        <label for="mileageImportance">Importance (0-5)</label>
+        <input type="number" min="0" max="5" id = "mileageImportance" name="mileageImportance">
 
 
         <h3>Seating</h3>
 
-        <label>How many seats?</label>
-        <input type="number" name="seats">
+        <label for="seats">How many seats?</label>
+        <input type="number" id = "seats" name="seats">
 
-        <label>Importance (0-5)</label>
-        <input type="number" min="0" max="5" name="seatImportance">
+        <label for= "seatImportance">Importance (0-5)</label>
+        <input type="number" min="0" max="5" id = "seatImportance" name="seatImportance">
 
-
-        <h3>Preferred Car Makes</h3>
-
-        <label>Select preferred brands</label>
-        <select name="makes" multiple>
+        <h3>preferred brands</h3>
+        <label for= "makes" >Select preferred brands</label>
+        <select id = "makes" name="makes" multiple>
 
             <option>Toyota</option>
             <option>Honda</option>
@@ -75,10 +73,10 @@
 
         </select>
 
+        <h3>Body Type</h3>
+        <label for= "bodyType" >Preferred Body Type</label>
 
-        <h3>Preferred Body Type</h3>
-
-        <select name="bodyType">
+        <select id="bodyType" name="bodyType">
 
             <option>Sedan</option>
             <option>SUV</option>

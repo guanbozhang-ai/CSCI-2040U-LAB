@@ -103,7 +103,7 @@ public class Car {
         sb.append("\"horsepower\":\"").append(horsepower).append("\",");
         sb.append("\"price\":\"").append(price).append("\",");
         sb.append("\"mileage\":\"").append(mileage).append("\",");
-        sb.append("\"seating\":\"").append(seating).append("\",");
+        sb.append("\"seating\":\"").append(seating).append("\"");
         sb.append("}");
         return sb.toString(); // Return JSON string
     }

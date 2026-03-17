@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Handles saving and loading cars from a JSON file.
- * Default relative filepath: src/main/resources/cars.json
+ * Default relative filepath: src/main/resources/static/cars.json
  */
 public class CarStorage {
 

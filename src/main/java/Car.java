@@ -69,6 +69,22 @@ public class Car {
         return bodyType;
     }
 
+    public int getHorsepower() {
+        return horsepower;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public int getSeating() {
+        return seating;
+    }
+
     public void setMake(String make) {
         this.make = make;
     }
@@ -100,10 +116,10 @@ public class Car {
         sb.append("\"make\":\"").append(make).append("\",");
         sb.append("\"model\":\"").append(model).append("\",");
         sb.append("\"bodyType\":\"").append(bodyType).append("\",");
-        sb.append("\"horsepower\":\"").append(horsepower).append("\",");
-        sb.append("\"price\":\"").append(price).append("\",");
-        sb.append("\"mileage\":\"").append(mileage).append("\",");
-        sb.append("\"seating\":\"").append(seating).append("\"");
+        sb.append("\"horsepower\":").append(horsepower).append(",");
+        sb.append("\"price\":").append(price).append(",");
+        sb.append("\"mileage\":").append(mileage).append(",");
+        sb.append("\"seating\":").append(seating);
         sb.append("}");
         return sb.toString(); // Return JSON string
     }
@@ -119,10 +135,10 @@ public class Car {
         String make  = extractString(json, "make");
         String model = extractString(json, "model");
         String bodyType = extractString(json, "bodyType");
-        int horsepower  = Integer.parseInt(extractString(json, "horsepower"));
-        int price  = Integer.parseInt(extractString(json, "price"));
-        int mileage  = Integer.parseInt(extractString(json, "mileage"));
-        int seating  = Integer.parseInt(extractString(json, "seating"));
+        int horsepower  = extractInt(json, "horsepower");
+        int price  = extractInt(json, "price");
+        int mileage  = extractInt(json, "mileage");
+        int seating  = extractInt(json, "seating");
 
         return new Car(make, model, bodyType, horsepower, price, mileage, seating); // Create new Car object
     }
@@ -140,8 +156,23 @@ public class Car {
 
         int start = json.indexOf(search) + search.length(); // Start position
 
-        int end = json.indexOf("\"", start); // End at next quote
+        int end = json.indexOf("\"", start); // End at next quotes
 
         return json.substring(start, end); // Return extracted text
     }
+
+    private static int extractInt(String json, String key) {
+        // Create pattern like: "make":"
+        String search = "\"" + key + "\":";
+
+        int start = json.indexOf(search) + search.length(); // Start position
+
+        int end = json.indexOf(",", start); // End at comma separator
+        if(end == -1) {
+            end = json.indexOf("}", start); // End at the end of json if no more elements
+        }
+
+        return Integer.parseInt(json.substring(start, end)); // Return extracted text
+    }
+
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Test {
+public class Demo {
     public static void printMenu() {
         System.out.println("Car Dealership Test Menu");
         System.out.println("1. Add a car");
@@ -9,10 +9,35 @@ public class Test {
         System.out.println("0. Exit");
     }
 
+    public static void addCar(Scanner scanner, CarStock carStock) {
+        System.out.print("Make: ");
+        String make = scanner.next();
+
+        System.out.print("Model: ");
+        String model = scanner.next();
+
+        System.out.print("Body Type: ");
+        String bodyType = scanner.next();
+
+        System.out.print("Horsepower: ");
+        int horsepower = scanner.nextInt();
+
+        System.out.print("Price: ");
+        int price = scanner.nextInt();
+
+        System.out.print("Mileage: ");
+        int mileage = scanner.nextInt();
+
+        System.out.print("Seating: ");
+        int seating = scanner.nextInt();
+
+        carStock.addCar(new Car(make, model, bodyType, horsepower, price, mileage, seating));
+    }
+
     public static void main(String[] args) {
         int option = 100;
         Scanner scanner = new Scanner(System.in);
-        CarStock carStock = new CarStock("src/main/resources/cars.json");
+        CarStock carStock = new CarStock("src/main/resources/static/cars.json");
 
         while(option != 0) {
             printMenu();
@@ -23,28 +48,7 @@ public class Test {
                     break;
 
                 case 1:
-                    System.out.print("Make: ");
-                    String make = scanner.next();
-
-                    System.out.print("Model: ");
-                    String model = scanner.next();
-
-                    System.out.print("Body Type: ");
-                    String bodyType = scanner.next();
-
-                    System.out.print("Horsepower: ");
-                    int horsepower = scanner.nextInt();
-
-                    System.out.print("Price: ");
-                    int price = scanner.nextInt();
-
-                    System.out.print("Mileage: ");
-                    int mileage = scanner.nextInt();
-
-                    System.out.print("Seating: ");
-                    int seating = scanner.nextInt();
-
-                    carStock.addCar(new Car(make, model, bodyType, horsepower, price, mileage, seating));
+                    addCar(scanner, carStock);
                     break;
 
                 case 2:

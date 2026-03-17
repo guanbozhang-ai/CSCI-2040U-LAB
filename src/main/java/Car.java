@@ -40,15 +40,10 @@ public class Car {
      * Initializes the attribute vector of the car. Runs on construction
      */
     private void setCarAttributes() {
-        // Cost: maxes out at $100k with an ATTRIBUTE_MAX of 5
-        setAttribute("cost", Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) price) / 20000.0));
-        // Sportiness: maxes out at 500HP with an ATTRIBUTE_MAX of 5
-        setAttribute("sportiness", Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) horsepower) / 100.0));
-        // Mileage: maxes out at 100k km with an ATTRIBUTE_MAX of 5
-        setAttribute("mileage", Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) mileage) / 20000.0));
-        // Seating: scales linearly up to 8 seats
-        setAttribute("seating", Math.min(UserAttributeMap.ATTRIBUTE_MAX,
-                UserAttributeMap.ATTRIBUTE_MAX * ((double) seating) / 8.0));
+        setAttribute("cost", AttributeFormulas.cost(price));
+        setAttribute("sportiness", AttributeFormulas.sportiness(horsepower));
+        setAttribute("mileage", AttributeFormulas.mileage(mileage));
+        setAttribute("seating", AttributeFormulas.seating(seating));
     }
 
 

@@ -25,8 +25,8 @@ public class AttributeFormulas {
      * Increases by 1 every 20k km.
      * Currently maxes out at 100k km with an ATTRIBUTE_MAX of 5.
      *
-     * @param s The integer horsepower
-     * @return The sportiness attribute value
+     * @param m The integer mileage
+     * @return The mileage attribute value
      */
     public static double mileage(int m) {
         return Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) m) / 20000.0);
@@ -35,8 +35,8 @@ public class AttributeFormulas {
     /**
      * Increases linearly from 0 to 8 seats.
      *
-     * @param s The integer horsepower
-     * @return The sportiness attribute value
+     * @param s The integer seating
+     * @return The seating attribute value
      */
     public static double seating(int s) {
         return Math.min(UserAttributeMap.ATTRIBUTE_MAX,

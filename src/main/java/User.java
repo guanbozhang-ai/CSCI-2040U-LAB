@@ -16,12 +16,18 @@ public class User {
     }
 
     /**
-     * Manually create a User object given all required input data.
+     * Manually create a User object given all required values.
      *
      * @param costValue
      * @param costImportance
      * @param sportinessValue
      * @param sportinessImportance
+     * @param mileageValue
+     * @param mileageImportance
+     * @param seatingValue
+     * @param seatingImportance
+     * @param preferredMakes
+     * @param preferredBodyTypes
      */
     public User(int costValue, double costImportance,
                 int sportinessValue, double sportinessImportance,

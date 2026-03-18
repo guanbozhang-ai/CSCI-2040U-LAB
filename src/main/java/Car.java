@@ -57,7 +57,7 @@ public class Car {
     }
 
     public String getModel() {
-       return model;
+        return model;
     }
 
     public String getBodyType() {
@@ -146,14 +146,14 @@ public class Car {
      */
     private static String extractString(String json, String key) {
 
-        // Create pattern like: "make":"
-        String search = "\"" + key + "\":\"";
+        // Find "key": then skip to opening quote (handles optional space after colon)
+        String search = "\"" + key + "\":";
 
-        int start = json.indexOf(search) + search.length(); // Start position
+        int colonEnd = json.indexOf(search) + search.length(); // Position after the colon
+        int start = json.indexOf("\"", colonEnd) + 1;          // Skip to char after opening quote
+        int end = json.indexOf("\"", start);                    // End at closing quote
 
-        int end = json.indexOf("\"", start); // End at next quotes
-
-        return json.substring(start, end); // Return extracted text
+        return json.substring(start, end).trim();
     }
 
     private static int extractInt(String json, String key) {
@@ -167,7 +167,7 @@ public class Car {
             end = json.indexOf("}", start); // End at the end of json if no more elements
         }
 
-        return Integer.parseInt(json.substring(start, end)); // Return extracted text
+        return Integer.parseInt(json.substring(start, end).trim()); // Return extracted text
     }
 
 }

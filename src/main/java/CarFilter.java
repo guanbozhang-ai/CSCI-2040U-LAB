@@ -1,6 +1,7 @@
 import java.util.function.Predicate;
 
 public class CarFilter {
+    //TODO: update to match new car object
 
     public static Predicate<Car> byMake(String make) {
         return car -> car.getMake().equalsIgnoreCase(make);

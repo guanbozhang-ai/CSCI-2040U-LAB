@@ -3,36 +3,85 @@ import java.util.HashMap;
 public class Car {
     //TODO: make a list (initialize on runtime) of all possible makes
     //TODO: make a list (initialize on runtime) of all possible bodyTypes in Car class
+    public final String[] ENGINE_CONFIGURATIONS = {"V", "Inline", "W", "Flat", "Boxer", "Radial", "Rotary"};
+    public final String[] DRIVETRAIN_CONFIGURATIONS = {"FF", "MF", "RF", "FR", "MR", "RR", "F4", "M4", "R4", "24"};
+    public final String[] FUEL_TYPES = {"Gas", "Diesel", "Hybrid", "Electric"};
+    public final String[] TRANSMISSIONS = {"Manual", "Automatic", "CVT", "Electric"};
 
-    public final String[] SPECIFICATIONS = {"make", "model", "bodyType"};
     private HashMap<String, Double> carAttributes = new HashMap<>();
+
     private String make;
     private String model;
     private String bodyType;
-    private int horsepower;
+    private String engineConfiguration;
+    private String transmission;
+    private String trim;
+    private String drivetrainConfiguration;
+    private String extColour;
+    private String intColour;
+    private String fuelType;
+    private String imageURL;
+
+    private int year;
     private int price;
+    private int horsepower;
+    private int cylinders;
+    private int gears;
     private int mileage;
     private int seating;
 
+    private double fuelEconomy;
+
     /**
      * Initializes a full Car object
+     *
+     * @param year int, year of production
      * @param make String, the make of the car
      * @param model String, the model of the car
-     * @param bodyType String, the body type of the car
-     * @param horsepower int, the horsepower of the car
      * @param price int, the price of the car
+     * @param bodyType String, the body type of the car
+     * @param trim String, the trim level
+     * @param extColour String, exterior colour
+     * @param intColour String, interior colour
+     * @param fuelType String, the type of fuel the car uses
+     * @param horsepower int, the horsepower of the car
      * @param mileage int, the amount of km the car has been driven
+     * @param fuelEconomy double, the fuel economy in L/100km
+     * @param engineConfiguration String, the layout of the engine (ex. Inline, Boxer, V)
+     * @param drivetrainConfiguration String, the layout of the drivetrain (ex. FF, FR)
      * @param seating int, the amount of seats the car has
+     * @param cylinders int, the number of cylinders in the engine
+     * @param gears int, the number of gears in the transmission
+     * @param transmission String, whether the transmission is manual, automatic, a CVT, or electric
+     * @param imageURL String, a link to the cover image of the car
      */
-    public Car(String make, String model, String bodyType, int horsepower,
-               int price, int mileage, int seating) {
+    public Car(int year, String make, String model, int price, String bodyType, String trim,
+               String extColour, String intColour, String fuelType, int horsepower, int mileage,
+               double fuelEconomy, String engineConfiguration, String drivetrainConfiguration, int seating,
+               int cylinders, int gears, String transmission, String imageURL) {
+        this.year = year;
         this.make = make;
         this.model = model;
-        this.bodyType = bodyType;
-        this.horsepower = horsepower;
         this.price = price;
+        this.bodyType = bodyType;
+
+        this.trim = trim;
+        this.extColour = extColour;
+        this.intColour = intColour;
+        this.fuelType = fuelType;
+        this.horsepower = horsepower;
+
         this.mileage = mileage;
+        this.fuelEconomy = fuelEconomy;
+        this.engineConfiguration = engineConfiguration;
+        this.drivetrainConfiguration = drivetrainConfiguration;
         this.seating = seating;
+
+        this.cylinders = cylinders;
+        this.gears = gears;
+        this.transmission = transmission;
+        this.imageURL = imageURL;
+
         setCarAttributes();
     }
 
@@ -51,54 +100,50 @@ public class Car {
         return carAttributes;
     }
 
+    public int getYear() { return year; }
 
-    public String getMake() {
-        return make;
-    }
+    public String getMake() { return make; }
 
-    public String getModel() {
-        return model;
-    }
+    public String getModel() { return model; }
 
-    public String getBodyType() {
-        return bodyType;
-    }
+    public int getPrice() { return price; }
 
-    public int getHorsepower() {
-        return horsepower;
-    }
+    public String getBodyType() { return bodyType; }
 
-    public int getPrice() {
-        return price;
-    }
+    public String getTrim() { return trim; }
 
-    public int getMileage() {
-        return mileage;
-    }
+    public String getExtColour() { return extColour; }
 
-    public int getSeating() {
-        return seating;
-    }
+    public String getIntColour() { return intColour; }
 
-    public void setMake(String make) {
-        this.make = make;
-    }
+    public String getFuelType() { return fuelType; }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+    public int getHorsepower() { return horsepower; }
 
-    public void setBodyType(String bodyType) {
-        this.bodyType = bodyType;
-    }
+    public int getMileage() { return mileage; }
+
+    public double getFuelEconomy() { return fuelEconomy; }
+
+    public String getEngineConfiguration() { return engineConfiguration; }
+
+    public String getDrivetrainConfiguration() { return drivetrainConfiguration; }
+
+    public int getSeating() { return seating; }
+
+    public int getCylinders() { return cylinders; }
+
+    public int getGears() { return gears; }
+
+    public String getTransmission() { return transmission; }
+
+    public String getImageURL() { return imageURL; }
 
     public void setAttribute(String name, Double value) {
         carAttributes.putIfAbsent(name, value);
     }
 
     public String toString() {
-        return make + " " + model + ", body type: " + bodyType +
-                ", $" + price + ", " + horsepower + " HP, " + mileage + " km";
+        return year + " " + make + " " + model;
     }
 
     /**
@@ -108,13 +153,28 @@ public class Car {
     public String toJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        sb.append("\"year\":").append(year).append(",");
         sb.append("\"make\":\"").append(make).append("\",");
         sb.append("\"model\":\"").append(model).append("\",");
-        sb.append("\"bodyType\":\"").append(bodyType).append("\",");
-        sb.append("\"horsepower\":").append(horsepower).append(",");
         sb.append("\"price\":").append(price).append(",");
+        sb.append("\"bodyType\":\"").append(bodyType).append("\",");
+
+        sb.append("\"trim\":\"").append(trim).append("\",");
+        sb.append("\"extColour\":\"").append(extColour).append("\",");
+        sb.append("\"intColour\":\"").append(intColour).append("\",");
+        sb.append("\"fuelType\":\"").append(fuelType).append("\",");
+        sb.append("\"horsepower\":").append(horsepower).append(",");
+
         sb.append("\"mileage\":").append(mileage).append(",");
-        sb.append("\"seating\":").append(seating);
+        sb.append("\"fuelEconomy\":").append(fuelEconomy).append(",");
+        sb.append("\"engineConfiguration\":\"").append(engineConfiguration).append("\",");
+        sb.append("\"drivetrainConfiguration\":\"").append(drivetrainConfiguration).append("\",");
+        sb.append("\"seating\":").append(seating).append(",");
+
+        sb.append("\"cylinders\":").append(cylinders).append(",");
+        sb.append("\"gears\":").append(gears).append(",");
+        sb.append("\"transmission\":\"").append(transmission).append("\",");
+        sb.append("\"imageURL\":\"").append(imageURL);
         sb.append("}");
         return sb.toString(); // Return JSON string
     }
@@ -127,15 +187,33 @@ public class Car {
     public static Car fromJson(String json) {
         json = json.trim(); // Remove extra spaces
 
+        int year = extractInt(json, "year");
         String make  = extractString(json, "make");
         String model = extractString(json, "model");
-        String bodyType = extractString(json, "bodyType");
-        int horsepower  = extractInt(json, "horsepower");
         int price  = extractInt(json, "price");
+        String bodyType = extractString(json, "bodyType");
+
+        String trim  = extractString(json, "trim");
+        String extColour  = extractString(json, "extColour");
+        String intColour  = extractString(json, "intColour");
+        String fuelType  = extractString(json, "fuelType");
+        int horsepower  = extractInt(json, "horsepower");
+
         int mileage  = extractInt(json, "mileage");
+        double fuelEconomy  = extractDouble(json, "fuelEconomy");
+        String engineConfiguration  = extractString(json, "engineConfiguration");
+        String drivetrainConfiguration  = extractString(json, "drivetrainConfiguration");
         int seating  = extractInt(json, "seating");
 
-        return new Car(make, model, bodyType, horsepower, price, mileage, seating); // Create new Car object
+        int cylinders  = extractInt(json, "cylinders");
+        int gears  = extractInt(json, "gears");
+        String transmission  = extractString(json, "transmission");
+        String imageURL  = extractString(json, "imageURL");
+
+        return new Car(year, make, model, price, bodyType,
+                trim, extColour, intColour, fuelType, horsepower,
+                mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
+                cylinders, gears, transmission, imageURL); // Create new Car object
     }
 
     /**
@@ -168,6 +246,20 @@ public class Car {
         }
 
         return Integer.parseInt(json.substring(start, end).trim()); // Return extracted text
+    }
+
+    private static double extractDouble(String json, String key) {
+        // Create pattern like: "make":"
+        String search = "\"" + key + "\":";
+
+        int start = json.indexOf(search) + search.length(); // Start position
+
+        int end = json.indexOf(",", start); // End at comma separator
+        if(end == -1) {
+            end = json.indexOf("}", start); // End at the end of json if no more elements
+        }
+
+        return Double.parseDouble(json.substring(start, end).trim()); // Return extracted text
     }
 
 }

@@ -1,12 +1,18 @@
+import org.w3c.dom.Attr;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Car {
-    //TODO: make a list (initialize on runtime) of all possible makes
-    //TODO: make a list (initialize on runtime) of all possible bodyTypes in Car class
-    public final String[] ENGINE_CONFIGURATIONS = {"V", "Inline", "W", "Flat", "Boxer", "Radial", "Rotary"};
-    public final String[] DRIVETRAIN_CONFIGURATIONS = {"FF", "MF", "RF", "FR", "MR", "RR", "F4", "M4", "R4", "24"};
-    public final String[] FUEL_TYPES = {"Gas", "Diesel", "Hybrid", "Electric"};
-    public final String[] TRANSMISSIONS = {"Manual", "Automatic", "CVT", "Electric"};
+    public static final ArrayList<String> ENGINE_CONFIGURATIONS =
+            new ArrayList<>(Arrays.asList("V", "Inline", "W", "Flat", "Boxer", "Radial", "Rotary"));
+    public static final ArrayList<String> DRIVETRAIN_CONFIGURATIONS =
+            new ArrayList<>(Arrays.asList("FF", "MF", "RF", "FR", "MR", "RR", "F4", "M4", "R4", "24"));
+    public static final ArrayList<String> FUEL_TYPES =
+            new ArrayList<>(Arrays.asList("Gas", "Diesel", "Hybrid", "Electric"));
+    public static final ArrayList<String> TRANSMISSIONS =
+            new ArrayList<>(Arrays.asList("Manual", "Automatic", "CVT", "Electric"));
 
     private HashMap<String, Double> carAttributes = new HashMap<>();
 
@@ -93,6 +99,8 @@ public class Car {
         setAttribute("sportiness", AttributeFormulas.sportiness(horsepower));
         setAttribute("mileage", AttributeFormulas.mileage(mileage));
         setAttribute("seating", AttributeFormulas.seating(seating));
+        setAttribute("economy", AttributeFormulas.economy(fuelEconomy));
+        setAttribute("recency", AttributeFormulas.recency(year));
     }
 
 

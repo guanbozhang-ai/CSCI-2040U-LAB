@@ -4,7 +4,7 @@ import java.util.Set;
 public class UserAttributeMap {
     public static final double ATTRIBUTE_MAX = 5;
     //TODO: finalize list of attributes
-    public static final String[] ATTRIBUTE_NAMES = {"cost", "sportiness", "mileage", "seating"};
+    public static final String[] ATTRIBUTE_NAMES = {"cost", "sportiness", "mileage", "seating", "economy", "recency"};
     private HashMap<String, HashMap<String, Double>> attributes;
 
     UserAttributeMap(HashMap<String, HashMap<String, Double>> attributes) {

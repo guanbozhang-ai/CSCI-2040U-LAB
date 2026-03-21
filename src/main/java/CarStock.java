@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CarStock {
+    public HashSet<String> MAKES = new HashSet<>();
+    public HashSet<String> BODY_TYPES = new HashSet<>();
+
     private ArrayList<Car> cars;
     private final CarStorage storage;
 
@@ -11,7 +15,29 @@ public class CarStock {
     public CarStock(String storageFilePath) {
         this.storage = new CarStorage(storageFilePath); // Create storage handler
         this.cars = storage.load(); // Load cars from file into memory
+
+        readMakes();
+        readBodyTypes();
+
         System.out.println("Loaded " + cars.size() + " car(s) from " + storageFilePath); // Print how many loaded
+    }
+
+    /**
+     * Initializes list of all makes in the current stock
+     */
+    private void readMakes() {
+        for (Car car : cars) {
+            MAKES.add(car.getMake());
+        }
+    }
+
+    /**
+     * Initializes list of all body types in the current stock
+     */
+    private void readBodyTypes() {
+        for (Car car : cars) {
+            BODY_TYPES.add(car.getBodyType());
+        }
     }
 
     /**
@@ -21,6 +47,9 @@ public class CarStock {
     public void addCar(Car car) {
         cars.add(car);
         storage.save(cars);
+
+        MAKES.add(car.getMake());
+        BODY_TYPES.add(car.getBodyType());
     }
 
     /**

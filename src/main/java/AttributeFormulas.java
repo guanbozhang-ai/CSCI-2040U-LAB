@@ -44,4 +44,27 @@ public class AttributeFormulas {
         return Math.min(UserAttributeMap.ATTRIBUTE_MAX,
                 UserAttributeMap.ATTRIBUTE_MAX * ((double) s) / 8.0);
     }
+
+    /**
+     * Increases by 1 every 4L/100km.
+     * Currently maxes out at 20L/100km with an ATTRIBUTE_MAX of 5.
+     *
+     * @param e The double fuel economy
+     * @return The economy attribute value
+     */
+    public static double economy(double e) {
+        return Math.min(UserAttributeMap.ATTRIBUTE_MAX, e / 4.0);
+    }
+
+    /**
+     * Increases by 1 for every 3 years before 2025.
+     * Currently maxes out at 2010 with an ATTRIBUTE_MAX of 5.
+     *
+     * @param y The int year
+     * @return The recency attribute value
+     */
+    public static double recency(int y) {
+        y = Math.max(0, -y + 2025);
+        return Math.min(UserAttributeMap.ATTRIBUTE_MAX, ((double) y) / 3.0);
+    }
 }

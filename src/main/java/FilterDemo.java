@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
-public class test {
+public class FilterDemo {
+    /*
+    NOTE: DOES NOT MATCH ALL CRITERIA OF NEW FILTER
+    I figured we can probably just worry about adding that functionality with our frontend
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CarFilterRunner runner = new CarFilterRunner("src/main/resources/static/cars.json");

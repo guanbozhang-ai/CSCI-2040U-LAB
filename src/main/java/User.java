@@ -67,6 +67,7 @@ public class User {
      * @return A double containing the Euclidean distance between the attribute vectors
      */
     public static double match(Car car) {
+        //TODO: fix makes and body types dominating distance, fix price/mileage calc
         HashMap<String, Double> carAttributes = car.getCarAttributes();
         double distance = 0;
         if (!preferredMakes.contains(car.getMake())){

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Demo {
+public class MatchingDemo {
     public static void printMenu() {
         System.out.println("Car Dealership Test Menu");
         System.out.println("1. Add a car");

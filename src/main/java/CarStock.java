@@ -7,6 +7,8 @@ public class CarStock {
 
     private ArrayList<Car> cars;
     private final CarStorage storage;
+    //TODO: make a list (initialize on runtime) of all possible bodyTypes in Car class
+    //TODO: make a list (initialize on runtime) of all possible makes
 
     /**
      * Constructs a CarStock object given a file path

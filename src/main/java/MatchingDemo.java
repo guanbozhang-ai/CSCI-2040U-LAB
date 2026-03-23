@@ -67,11 +67,15 @@ public class MatchingDemo {
 
         System.out.print("Image Link: ");
         String imageURL = scanner.next();
-
-        carStock.addCar(new Car(year, make, model, price, bodyType,
-                trim, extColour, intColour, fuelType, horsepower,
-                mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
-                cylinders, gears, transmission, imageURL));
+        try {
+            carStock.addCar(new Car(year, make, model, price, bodyType,
+                    trim, extColour, intColour, fuelType, horsepower,
+                    mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
+                    cylinders, gears, transmission, imageURL));
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void main(String[] args) {

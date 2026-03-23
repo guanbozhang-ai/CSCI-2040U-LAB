@@ -1,5 +1,4 @@
 public class AttributeFormulas {
-    //TODO: add formula for fuel economy attribute
 
     /**
      * Increases by 1 every $20k.

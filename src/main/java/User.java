@@ -6,11 +6,11 @@ import java.util.*;
 
 
 public class User {
-    //TODO: add preferred colour and drivetrain
     private static UserAttributeMap userAttributes;
     private static ArrayList<String> preferredMakes;
     private static ArrayList<String> preferredBodyTypes;
     public static String preferredFuelType = null;
+    public static String preferredTransmission = null;
 
     /**
      * Initializes a new User object using the survey methods in the User class
@@ -48,7 +48,7 @@ public class User {
                 double economyValue, double economyImportance,
                 int recencyValue, double recencyImportance,
                 ArrayList<String> preferredMakes, ArrayList<String> preferredBodyTypes,
-                String preferredFuelType) {
+                String preferredFuelType, String preferredTransmission) {
         userAttributes = new UserAttributeMap();
         addAttribute("cost", AttributeFormulas.cost(costValue), costImportance);
         addAttribute("sportiness", AttributeFormulas.sportiness(sportinessValue), sportinessImportance);
@@ -59,7 +59,12 @@ public class User {
 
         this.preferredMakes = preferredMakes;
         this.preferredBodyTypes = preferredBodyTypes;
-        this.preferredFuelType = preferredFuelType;
+        if(Car.FUEL_TYPES.contains(preferredFuelType)) {
+            this.preferredFuelType = preferredFuelType;
+        }
+        if(Car.TRANSMISSIONS.contains(preferredTransmission)) {
+            this.preferredTransmission = preferredTransmission;
+        }
     }
 
     public UserAttributeMap getUserAttributes() {
@@ -90,6 +95,7 @@ public class User {
         double makeImportance = 1;
         double bodyTypeImportance = 1;
         double fuelTypeImportance = 1;
+        double transmissionImportance = 1;
 
         HashMap<String, Double> carAttributes = car.getCarAttributes();
         double distance = 0;
@@ -101,6 +107,9 @@ public class User {
         }
         if ( (preferredFuelType != null) && (!Objects.equals(preferredFuelType, car.getFuelType())) ) {
             distance += fuelTypeImportance;
+        }
+        if ( (preferredTransmission != null) && (!Objects.equals(preferredTransmission, car.getTransmission())) ) {
+            distance += transmissionImportance;
         }
 
         for(String attribute : userAttributes.getAttributeNames()) {
@@ -216,6 +225,23 @@ public class User {
             System.out.println("Options: " + Car.FUEL_TYPES);
             preferredFuelType = scanner.next();
             if(Car.FUEL_TYPES.contains(preferredFuelType)) {
+                option = "0";
+            }
+            else {
+                System.out.println("Invalid selection.");
+            }
+        }
+    }
+
+    public void preferredTransmissionSurvey() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Do you have a preferred transmission? (0 to exit, anything else to continue)");
+        String option = scanner.next();
+        while(!Objects.equals(option, "0")) {
+            System.out.println("Input preferred transmission.");
+            System.out.println("Options: " + Car.TRANSMISSIONS);
+            preferredTransmission = scanner.next();
+            if(Car.TRANSMISSIONS.contains(preferredTransmission)) {
                 option = "0";
             }
             else {

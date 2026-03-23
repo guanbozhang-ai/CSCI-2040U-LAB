@@ -53,7 +53,12 @@ public class CarStorage {
 
                     if (depth == 0) { // Full object found
                         String block = content.substring(start, i + 1); // Extract JSON
-                        cars.add(Car.fromJson(block)); // Convert to Car and add
+                        try {
+                            cars.add(Car.fromJson(block)); // Convert to Car and add
+                        }
+                        catch (Exception e) {
+                            System.out.println("Error loading file: " + e.getMessage());
+                        }
                     }
                 }
             }

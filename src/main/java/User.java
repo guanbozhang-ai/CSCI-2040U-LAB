@@ -6,6 +6,7 @@ import java.util.*;
 
 
 public class User {
+    //TODO: add preferred colour and drivetrain
     private static UserAttributeMap userAttributes;
     private static ArrayList<String> preferredMakes;
     private static ArrayList<String> preferredBodyTypes;

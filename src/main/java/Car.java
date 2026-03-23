@@ -64,7 +64,23 @@ public class Car {
     public Car(int year, String make, String model, int price, String bodyType, String trim,
                String extColour, String intColour, String fuelType, int horsepower, int mileage,
                double fuelEconomy, String engineConfiguration, String drivetrainConfiguration, int seating,
-               int cylinders, int gears, String transmission, String imageURL) {
+               int cylinders, int gears, String transmission, String imageURL) throws Exception {
+
+        if(!ENGINE_CONFIGURATIONS.contains(engineConfiguration)) {
+            throw(new Exception("Invalid engine configuration."));
+        }
+        if(!DRIVETRAIN_CONFIGURATIONS.contains(drivetrainConfiguration)) {
+            throw(new Exception("Invalid drivetrain configuration."));
+        }
+        if(!FUEL_TYPES.contains(fuelType)) {
+            throw(new Exception("Invalid fuel type."));
+        }
+        if(!TRANSMISSIONS.contains(transmission)) {
+            throw(new Exception("Invalid transmission type."));
+        }
+
+
+
         this.year = year;
         this.make = make;
         this.model = model;
@@ -89,6 +105,7 @@ public class Car {
         this.imageURL = imageURL;
 
         setCarAttributes();
+
     }
 
     /**
@@ -183,7 +200,7 @@ public class Car {
         sb.append("\"gears\":").append(gears).append(",");
         sb.append("\"transmission\":\"").append(transmission).append("\",");
         sb.append("\"imageURL\":\"").append(imageURL);
-        sb.append("}");
+        sb.append("\"}");
         return sb.toString(); // Return JSON string
     }
 
@@ -192,7 +209,7 @@ public class Car {
      * @param json A String in .json format representing a Car
      * @return The represented Car object
      */
-    public static Car fromJson(String json) {
+    public static Car fromJson(String json) throws Exception {
         json = json.trim(); // Remove extra spaces
 
         int year = extractInt(json, "year");

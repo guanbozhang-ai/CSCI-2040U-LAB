@@ -1,3 +1,4 @@
+
 document.getElementById("surveyForm").addEventListener("submit", function(e){
 
     e.preventDefault()
@@ -41,4 +42,5 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
             alert("Error connecting to server")
         })
 
-})
+    showResult(bestCar);
+});

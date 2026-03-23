@@ -29,16 +29,12 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
 
             console.log("Match result:", result)
 
-            const resultDiv = document.createElement("div")
-            resultDiv.innerHTML = `
-            <h2>Best Match:</h2>
-            <p>${result.make} ${result.model}</p>
-            <p>Price: $${result.price}</p>
-            <p>Horsepower: ${result.horsepower}</p>
-        `
-
-            document.body.appendChild(resultDiv)
-
+            document.getElementById("result").innerHTML = `
+        <h2>Best Match:</h2>
+        <p>${result.make} ${result.model}</p>
+        <p>Price: $${result.price}</p>
+        <p>Horsepower: ${result.horsepower}</p>
+    `;
         })
         .catch(err => {
             console.error(err)

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GIT-IT-DONE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        .login-page {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .login-shell {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .logo-mark {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+            margin-bottom: 28px;
+        }
+
+        .logo-mark span {
+            color: #2563eb;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 0.88rem;
+            color: #6b7280;
+            margin-bottom: 28px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: #111;
+            background: #fafafa;
+            transition: border-color 0.2s, background 0.2s;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: #2563eb;
+            background: #fff;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #1d4ed8;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0;
+            color: #9ca3af;
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .btn-guest {
+            width: 100%;
+            padding: 11px;
+            background: transparent;
+            color: #374151;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-guest:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        .note {
+            margin-top: 24px;
+            font-size: 0.78rem;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">GIT-IT-DONE</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cars.html">Car List</a>
+            <a href="surver.html">Smart Match</a>
+            <a href="login.html" class="nav-button">Login</a>
+        </div>
+    </nav>
+
+    <main class="login-page">
+        <div class="login-shell">
+            <div class="card">
+                <div class="logo-mark">GIT-IT-<span>DONE</span></div>
+
+                <h2>Welcome back</h2>
+                <p class="subtitle">Sign in to browse inventory and compare vehicles.</p>
+
+                <form id="loginForm">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+
+                <div class="divider">or</div>
+
+                <a href="cars.html" class="btn-guest">Continue as Guest</a>
+
+                <p class="note">Any email and password works for now. Auth comes later.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            window.location.href = "cars.html";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -10,91 +10,93 @@
 
 <body>
 
-<nav class="navbar">
-    <div class="logo">GIT-IT-DONE</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="cars.html">Car list</a>
-        <a href="surver.html">Smart Match</a>
-    </div>
-</nav>
+    <nav class="navbar">
+        <div class="logo">GIT-IT-DONE</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cars.html">Car List</a>
+            <a href="surver.html">Smart Match</a>
+            <a href="login.html" class="nav-button">Login</a>
+        </div>
+    </nav>
 
-<section class="survey-container">
+    <section class="survey-container">
 
-    <h1>Smart Car Match Survey</h1>
-    <p>Answer a few questions to help us match the perfect car for you.</p>
+        <h1>Smart Car Match Survey</h1>
+        <p>Answer a few questions to help us match the perfect car for you.</p>
 
-    <form id="surveyForm">
+        <form id="surveyForm">
 
-        <h3>Price Preference</h3>
+            <h3>Price Preference</h3>
 
-        <label for="price">Ideal price point ($)</label>
-        <input type="number" id ="price" name="price">
+            <label for="price">Ideal price point ($)</label>
+            <input type="number" id="price" name="price">
 
-        <label for = "priceImportance">Importance (0-5)</label>
-        <input type="number" min="0" max="5" id = "priceImportance" name="priceImportance">
-
-
-        <h3>Performance</h3>
-
-        <label for = "horsepower">Desired horsepower</label>
-        <input type="number" id = "horsepower" name="horsepower">
-
-        <label for = "powerImportance">Importance (0-5)</label>
-        <input type="number" min="0" max="5"  id= "powerImportance" name="powerImportance">
+            <label for="priceImportance">Importance (0-5)</label>
+            <input type="number" min="0" max="5" id="priceImportance" name="priceImportance">
 
 
-        <h3>Mileage</h3>
+            <h3>Performance</h3>
 
-        <label for="mileage" >Maximum kilometres driven</label>
-        <input type="number" id = "mileage" name="mileage">
+            <label for="horsepower">Desired horsepower</label>
+            <input type="number" id="horsepower" name="horsepower">
 
-        <label for="mileageImportance">Importance (0-5)</label>
-        <input type="number" min="0" max="5" id = "mileageImportance" name="mileageImportance">
-
-
-        <h3>Seating</h3>
-
-        <label for="seats">How many seats?</label>
-        <input type="number" id = "seats" name="seats">
-
-        <label for= "seatImportance">Importance (0-5)</label>
-        <input type="number" min="0" max="5" id = "seatImportance" name="seatImportance">
-
-        <h3>preferred brands</h3>
-        <label for= "makes" >Select preferred brands</label>
-        <select id = "makes" name="makes">
-
-            <option>Toyota</option>
-            <option>Honda</option>
-            <option>BMW</option>
-            <option>Audi</option>
-            <option>Ford</option>
-
-        </select>
-
-        <h3>Body Type</h3>
-        <label for= "bodyType" >Preferred Body Type</label>
-        <select id="bodyType" name="bodyType">
-
-            <option>Sedan</option>
-            <option>SUV</option>
-            <option>Hatchback</option>
-            <option>Truck</option>
-            <option>Coupe</option>
-
-        </select>
+            <label for="powerImportance">Importance (0-5)</label>
+            <input type="number" min="0" max="5" id="powerImportance" name="powerImportance">
 
 
-        <br><br>
+            <h3>Mileage</h3>
 
-        <button type="submit" class="btn-primary">Find My Car</button>
+            <label for="mileage">Maximum kilometres driven</label>
+            <input type="number" id="mileage" name="mileage">
 
-    </form>
+            <label for="mileageImportance">Importance (0-5)</label>
+            <input type="number" min="0" max="5" id="mileageImportance" name="mileageImportance">
 
-</section>
 
-<script src="js/surver.js"></script>
+            <h3>Seating</h3>
+
+            <label for="seats">How many seats?</label>
+            <input type="number" id="seats" name="seats">
+
+            <label for="seatImportance">Importance (0-5)</label>
+            <input type="number" min="0" max="5" id="seatImportance" name="seatImportance">
+
+            <h3>preferred brands</h3>
+            <label for="makes">Select preferred brands</label>
+            <select id="makes" name="makes">
+
+                <option>Toyota</option>
+                <option>Honda</option>
+                <option>BMW</option>
+                <option>Audi</option>
+                <option>Ford</option>
+
+            </select>
+
+            <h3>Body Type</h3>
+            <label for="bodyType">Preferred Body Type</label>
+            <select id="bodyType" name="bodyType">
+
+                <option>Sedan</option>
+                <option>SUV</option>
+                <option>Hatchback</option>
+                <option>Truck</option>
+                <option>Coupe</option>
+
+            </select>
+
+
+            <br><br>
+
+            <button type="submit" class="btn-primary">Find My Car</button>
+
+        </form>
+
+    </section>
+
+    <script src="js/surver.js"></script>
 
 </body>
+
 </html>

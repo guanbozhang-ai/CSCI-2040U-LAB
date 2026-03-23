@@ -5,46 +5,205 @@
     <meta charset="UTF-8">
     <title>Cars in Stock</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .inventory-page {
+            background-color: #f9f9f9;
+            color: #333;
+            min-height: calc(100vh - 70px);
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .filter-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .filter-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .content {
+            flex: 1;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #555;
+        }
+
+        tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #eaf2f8;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                padding: 24px 20px;
+            }
+
+            .sidebar {
+                width: auto;
+            }
+
+            .content {
+                overflow-x: auto;
+            }
+
+            th,
+            td {
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-    <div class="logo">GIT-IT-DONE</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="cars.html">Car list</a>
-        <a href="surver.html">Smart Match</a>
-    </div>
-</nav>
+    <nav class="navbar">
+        <div class="logo">GIT-IT-DONE</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="cars.html">Car List</a>
+            <a href="surver.html">Smart Match</a>
+            <a href="login.html" class="nav-button">Login</a>
+        </div>
+    </nav>
 
-<section style="padding:40px">
+    <main class="inventory-page">
+        <div class="container">
 
-    <h1>Cars in Stock</h1>
+            <aside class="sidebar">
+                <h3>Filter Inventory</h3>
 
-    <table border="1" id="carTable">
+                <div class="filter-group">
+                    <label for="make">Make</label>
+                    <select id="make">
+                        <option value="">All Makes</option>
+                        <option value="ford">Ford</option>
+                        <option value="honda">Honda</option>
+                        <option value="toyota">Toyota</option>
+                    </select>
+                </div>
 
-        <thead>
-        <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Body Type</th>
-            <th>Horsepower</th>
-            <th>Price</th>
-            <th>Mileage</th>
-            <th>Seating</th>
-        </tr>
-        </thead>
+                <div class="filter-group">
+                    <label for="bodyType">Body Type</label>
+                    <select id="bodyType">
+                        <option value="">All Types</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="truck">Truck</option>
+                    </select>
+                </div>
 
-        <tbody>
+                <div class="filter-group">
+                    <label for="maxPrice">Max Price ($)</label>
+                    <input type="number" id="maxPrice" placeholder="e.g. 30000">
+                </div>
 
-        </tbody>
+                <button class="filter-btn" id="applyFilters">Apply Filters</button>
+            </aside>
 
-    </table>
+            <section class="content">
+                <h1>Cars in Stock</h1>
 
-</section>
+                <table id="carTable">
+                    <thead>
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Body Type</th>
+                            <th>Horsepower</th>
+                            <th>Price</th>
+                            <th>Mileage</th>
+                            <th>Seating</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
 
-<script src="js/cars.js"></script>
+        </div>
+    </main>
+
+    <script src="js/cars.js"></script>
 
 </body>
+
 </html>

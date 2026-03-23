@@ -16,7 +16,7 @@
 | Admin can add/edit/remove listings | 10h | Must Have | 
 | Show car listings with filters | 8h | Should Have | 
 | Save/favorite cars | 5h | Should Have |
-| Book a test drive | 6h | Should Have | 
+| Book a TestServer drive | 6h | Should Have | 
 | Customer reviews of sellers | 5h | Nice to Have | 
 
 **How it Works:**

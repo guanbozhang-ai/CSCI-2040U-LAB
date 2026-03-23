@@ -5,20 +5,44 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
     const formData = new FormData(this)
 
     const surveyData = {
-        price: formData.get("price"),
-        priceImportance: formData.get("priceImportance"),
-        horsepower: formData.get("horsepower"),
-        powerImportance: formData.get("powerImportance"),
-        mileage: formData.get("mileage"),
-        mileageImportance: formData.get("mileageImportance"),
-        seats: formData.get("seats"),
-        seatImportance: formData.get("seatImportance"),
-        makes: formData.getAll("makes"),
+        price: Number(formData.get("price")),
+        priceImportance: Number(formData.get("priceImportance")),
+        horsepower: Number(formData.get("horsepower")),
+        powerImportance: Number(formData.get("powerImportance")),
+        mileage: Number(formData.get("mileage")),
+        mileageImportance: Number(formData.get("mileageImportance")),
+        seats: Number(formData.get("seats")),
+        seatImportance: Number(formData.get("seatImportance")),
+        makes: [formData.get("makes")],
         bodyType: formData.get("bodyType")
     }
 
-    console.log(surveyData)
+    fetch("http://localhost:8080/api/match", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(surveyData)
+    })
+        .then(res => res.json())
+        .then(result => {
 
-    alert("Survey submitted!")
+            console.log("Match result:", result)
+
+            const resultDiv = document.createElement("div")
+            resultDiv.innerHTML = `
+            <h2>Best Match:</h2>
+            <p>${result.make} ${result.model}</p>
+            <p>Price: $${result.price}</p>
+            <p>Horsepower: ${result.horsepower}</p>
+        `
+
+            document.body.appendChild(resultDiv)
+
+        })
+        .catch(err => {
+            console.error(err)
+            alert("Error connecting to server")
+        })
 
 })

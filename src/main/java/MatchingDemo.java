@@ -10,6 +10,9 @@ public class MatchingDemo {
     }
 
     public static void addCar(Scanner scanner, CarStock carStock) {
+        System.out.println("ID: ");
+        int id = scanner.nextInt();
+
         System.out.println("Year: ");
         int year = scanner.nextInt();
 
@@ -68,7 +71,7 @@ public class MatchingDemo {
         System.out.print("Image Link: ");
         String imageURL = scanner.next();
         try {
-            carStock.addCar(new Car(year, make, model, price, bodyType,
+            carStock.addCar(new Car(id, year, make, model, price, bodyType,
                     trim, extColour, intColour, fuelType, horsepower,
                     mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
                     cylinders, gears, transmission, imageURL));

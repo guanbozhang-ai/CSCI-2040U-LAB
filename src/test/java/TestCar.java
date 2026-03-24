@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestCar {
     public Car makeTestCar() throws Exception {
-        return new Car(2024, "Honda", "Civic", 15000,
+        return new Car(1, 2024, "Honda", "Civic", 15000,
                 "Hatchback", "Type R", "Red", "Grey",
                 "Gas", 150, 30000, 8.0,
                 "Inline", "FF", 5, 4,
@@ -14,6 +14,7 @@ public class TestCar {
     @Test
     public void testCarConstructor() throws Exception {
         Car car = makeTestCar();
+        assertEquals(1, car.getId());
         assertEquals(2024, car.getYear());
         assertEquals("Honda", car.getMake());
         assertEquals("Civic", car.getModel());
@@ -54,7 +55,8 @@ public class TestCar {
     @Test
     public void testToJson() throws Exception {
         Car car = makeTestCar();
-        String expectedJson = "{\"year\":2024," +
+        String expectedJson = "{\"id\":1," +
+                "\"year\":2024," +
                 "\"make\":\"Honda\"," +
                 "\"model\":\"Civic\"," +
                 "\"price\":15000," +
@@ -79,7 +81,8 @@ public class TestCar {
     @Test
     public void testFromJson() throws Exception {
         Car car = makeTestCar();
-        String json = "{\"year\":2024," +
+        String json = "{\"id\":1," +
+                "\"year\":2024," +
                 "\"make\":\"Honda\"," +
                 "\"model\":\"Civic\"," +
                 "\"price\":15000," +

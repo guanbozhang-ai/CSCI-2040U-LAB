@@ -8,7 +8,7 @@ public class Car {
     public static final ArrayList<String> ENGINE_CONFIGURATIONS =
             new ArrayList<>(Arrays.asList("V", "Inline", "W", "Flat", "Boxer", "Radial", "Rotary"));
     public static final ArrayList<String> DRIVETRAIN_CONFIGURATIONS =
-            new ArrayList<>(Arrays.asList("FF", "MF", "RF", "FR", "MR", "RR", "F4", "M4", "R4", "24"));
+            new ArrayList<>(Arrays.asList("FWD", "RWD", "AWD", "4WD", "FF", "MF", "RF", "FR", "MR", "RR", "F4", "M4", "R4", "24"));
     public static final ArrayList<String> FUEL_TYPES =
             new ArrayList<>(Arrays.asList("Gas", "Diesel", "Hybrid", "Electric"));
     public static final ArrayList<String> TRANSMISSIONS =
@@ -28,6 +28,7 @@ public class Car {
     private String fuelType;
     private String imageURL;
 
+    private int id;
     private int year;
     private int price;
     private int horsepower;
@@ -41,6 +42,7 @@ public class Car {
     /**
      * Initializes a full Car object
      *
+     * @param id int, ID of car in system
      * @param year int, year of production
      * @param make String, the make of the car
      * @param model String, the model of the car
@@ -61,7 +63,7 @@ public class Car {
      * @param transmission String, whether the transmission is manual, automatic, a CVT, or electric
      * @param imageURL String, a link to the cover image of the car
      */
-    public Car(int year, String make, String model, int price, String bodyType, String trim,
+    public Car(int id, int year, String make, String model, int price, String bodyType, String trim,
                String extColour, String intColour, String fuelType, int horsepower, int mileage,
                double fuelEconomy, String engineConfiguration, String drivetrainConfiguration, int seating,
                int cylinders, int gears, String transmission, String imageURL) throws Exception {
@@ -80,7 +82,7 @@ public class Car {
         }
 
 
-
+        this.id = id;
         this.year = year;
         this.make = make;
         this.model = model;
@@ -123,6 +125,10 @@ public class Car {
 
     public HashMap<String, Double> getCarAttributes() {
         return carAttributes;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getYear() { return year; }
@@ -178,6 +184,7 @@ public class Car {
     public String toJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        sb.append("\"id\":").append(id).append(",");
         sb.append("\"year\":").append(year).append(",");
         sb.append("\"make\":\"").append(make).append("\",");
         sb.append("\"model\":\"").append(model).append("\",");
@@ -212,6 +219,7 @@ public class Car {
     public static Car fromJson(String json) throws Exception {
         json = json.trim(); // Remove extra spaces
 
+        int id = extractInt(json, "id");
         int year = extractInt(json, "year");
         String make  = extractString(json, "make");
         String model = extractString(json, "model");
@@ -235,7 +243,7 @@ public class Car {
         String transmission  = extractString(json, "transmission");
         String imageURL  = extractString(json, "imageURL");
 
-        return new Car(year, make, model, price, bodyType,
+        return new Car(id, year, make, model, price, bodyType,
                 trim, extColour, intColour, fuelType, horsepower,
                 mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
                 cylinders, gears, transmission, imageURL); // Create new Car object

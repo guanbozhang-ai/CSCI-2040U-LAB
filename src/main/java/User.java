@@ -20,6 +20,7 @@ public class User {
         preferredMakesSurvey();
         preferredBodyTypesSurvey();
         preferredFuelTypeSurvey();
+        preferredTransmissionSurvey();
     }
 
     /**

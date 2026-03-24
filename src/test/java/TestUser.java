@@ -29,7 +29,7 @@ public class TestUser {
     }
 
     public Car makeTestCar() throws Exception {
-        return new Car(2024, "Honda", "Civic", 15000,
+        return new Car(1, 2024, "Honda", "Civic", 15000,
                 "Hatchback", "Type R", "Red", "Grey",
                 "Gas", 150, 30000, 8.0,
                 "Inline", "FF", 5, 4,

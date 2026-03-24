@@ -14,7 +14,7 @@
     "mileage": 35000,
     "fuelEconomy": 8.5,
     "engineConfiguration": "Inline",
-    "drivetrainConfiguration": "FF",
+    "drivetrainConfiguration": "FWD",
     "seating": 5,
     "cylinders": 4,
     "gears": 6,

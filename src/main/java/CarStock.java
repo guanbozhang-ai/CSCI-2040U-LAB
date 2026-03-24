@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarStock {
     private ArrayList<Car> cars;
@@ -9,9 +10,9 @@ public class CarStock {
      * @param storageFilePath String containing the file path of .json file
      */
     public CarStock(String storageFilePath) {
-        this.storage = new CarStorage(storageFilePath); // Create storage handler
-        this.cars = storage.load(); // Load cars from file into memory
-        System.out.println("Loaded " + cars.size() + " car(s) from " + storageFilePath); // Print how many loaded
+        this.storage = new CarStorage(storageFilePath);
+        this.cars = storage.load();
+        System.out.println("Loaded " + cars.size() + " car(s) from " + storageFilePath);
     }
 
     /**
@@ -21,6 +22,14 @@ public class CarStock {
     public void addCar(Car car) {
         cars.add(car);
         storage.save(cars);
+    }
+
+    /**
+     * Returns the full list of cars (used by the GUI to build car cards).
+     * @return ArrayList of all Car objects in stock
+     */
+    public ArrayList<Car> getCars() {
+        return cars;
     }
 
     /**
@@ -34,7 +43,7 @@ public class CarStock {
         Car bestCar = null;
         for (Car car : cars) {
             double distance = user.match(car);
-            if(distance < bestMatch) {
+            if (distance < bestMatch) {
                 bestMatch = distance;
                 bestCar = car;
             }
@@ -47,12 +56,10 @@ public class CarStock {
      */
     public void printInventory() {
         if (cars.isEmpty()) {
-            System.out.println("Inventory is empty."); // Show message
+            System.out.println("Inventory is empty.");
             return;
         }
-
         System.out.println("Current inventory:");
-        // Print each car
         for (Car car : cars) {
             System.out.println(car);
         }

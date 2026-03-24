@@ -30,7 +30,13 @@ public class CarStorage {
 
         try {
 
-            String content = new String(Files.readAllBytes(file.toPath())).trim();
+            String content = new String(Files.readAllBytes(file.toPath()))
+                    .replaceAll("[\r\n]+", " ")
+                    .replaceAll("[ ]{2,}", " ")
+                    .replaceAll("\" : \"", "\":\"")
+                    .replaceAll("\": \"", "\":\"")
+                    .replaceAll("\" :\"", "\":\"")
+                    .trim();
 
             // Remove outer [ and ]
             content = content.substring(1, content.length() - 1).trim();

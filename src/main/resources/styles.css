@@ -1,0 +1,272 @@
+/* ── Root ─────────────────────────────────────────── */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f8f8f6;
+}
+
+/* ── Top bar ──────────────────────────────────────── */
+.topbar {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #0f0f0f;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 28 0 28;
+    -fx-min-height: 60px;
+}
+
+.brand-logo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-letter-spacing: 2px;
+}
+
+.brand-tagline {
+    -fx-font-size: 10px;
+    -fx-text-fill: #888888;
+    -fx-letter-spacing: 1px;
+}
+
+.nav-link {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #aaaaaa;
+    -fx-font-size: 12px;
+    -fx-padding: 4 12 4 12;
+    -fx-cursor: hand;
+}
+
+.nav-link:hover {
+    -fx-text-fill: #ffffff;
+}
+
+.survey-toggle-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+
+.survey-toggle-btn:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #0f0f0f;
+}
+
+/* ── Hero banner ──────────────────────────────────── */
+.hero {
+    -fx-background-color: #1a1a1a;
+    -fx-padding: 36 28 36 28;
+}
+
+.hero-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-letter-spacing: 1px;
+}
+
+.hero-sub {
+    -fx-font-size: 13px;
+    -fx-text-fill: #888888;
+}
+
+.hero-stat-value {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.hero-stat-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #666666;
+    -fx-letter-spacing: 1px;
+}
+
+.hero-divider {
+    -fx-background-color: #333333;
+    -fx-pref-width: 1;
+    -fx-pref-height: 36;
+}
+
+/* ── Filter chips ─────────────────────────────────── */
+.filter-chip {
+    -fx-background-color: transparent;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+    -fx-letter-spacing: 0.5px;
+    -fx-padding: 6 16 6 16;
+    -fx-cursor: hand;
+}
+
+.filter-chip:selected {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+}
+
+.filter-chip:hover {
+    -fx-border-color: #0f0f0f;
+    -fx-text-fill: #0f0f0f;
+}
+
+/* ── Car cards ────────────────────────────────────── */
+.car-card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e8e8e8;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-effect: null;
+}
+
+.car-card:hover {
+    -fx-border-color: #0f0f0f;
+}
+
+.car-card-matched {
+    -fx-border-color: #0f0f0f;
+    -fx-border-width: 2;
+}
+
+.car-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f0f0f;
+    -fx-letter-spacing: 0.3px;
+}
+
+.car-sub {
+    -fx-font-size: 11px;
+    -fx-text-fill: #999999;
+}
+
+.car-price {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f0f0f;
+    -fx-padding: 4 0 0 0;
+}
+
+.match-badge {
+    -fx-background-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-letter-spacing: 0.5px;
+    -fx-padding: 3 10 3 10;
+    -fx-background-radius: 0;
+}
+
+/* ── Survey panel ─────────────────────────────────── */
+.survey-panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e8e8e8;
+    -fx-border-width: 0 0 0 1;
+    -fx-padding: 24;
+}
+
+.panel-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f0f0f;
+    -fx-letter-spacing: 1px;
+}
+
+.panel-sub {
+    -fx-font-size: 11px;
+    -fx-text-fill: #999999;
+}
+
+.p-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #555555;
+    -fx-letter-spacing: 1px;
+}
+
+.sl-val {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0f0f0f;
+}
+
+.imp-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #aaaaaa;
+    -fx-letter-spacing: 0.5px;
+}
+
+/* ── Importance dots ──────────────────────────────── */
+.imp-dot {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+}
+
+.imp-dot-on {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #0f0f0f;
+}
+
+/* ── Tag toggle buttons ───────────────────────────── */
+.tag-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #d8d8d8;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+    -fx-padding: 4 12 4 12;
+    -fx-cursor: hand;
+}
+
+.tag-btn:selected {
+    -fx-background-color: #0f0f0f;
+    -fx-border-color: #0f0f0f;
+    -fx-text-fill: #ffffff;
+}
+
+.tag-btn:hover {
+    -fx-border-color: #0f0f0f;
+    -fx-text-fill: #0f0f0f;
+}
+
+/* ── Scroll pane ──────────────────────────────────── */
+.main-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.main-scroll > .viewport {
+    -fx-background-color: #f8f8f6;
+}
+
+/* ── Slider override ──────────────────────────────── */
+.slider .track {
+    -fx-background-color: #e0e0e0;
+    -fx-pref-height: 2px;
+}
+
+.slider .thumb {
+    -fx-background-color: #0f0f0f;
+    -fx-background-radius: 0;
+    -fx-pref-width: 14px;
+    -fx-pref-height: 14px;
+}

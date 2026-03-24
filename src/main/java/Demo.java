@@ -56,8 +56,7 @@ public class Demo {
                     break;
 
                 case 3:
-                    User user = new User();
-                    System.out.println("Best match for this user: " + carStock.findBestMatch(user));
+                    System.out.println("Please use the GUI to find your match.");
                     break;
 
                 default:

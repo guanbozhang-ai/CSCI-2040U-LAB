@@ -1,8 +1,302 @@
 [
-  {"make":"Toyota","model":"Corolla","bodyType":"Sedan","horsepower":150,"price":15000,"mileage":150000,"seating":5},
-  {"make":"Lexus","model":"LFA","bodyType":"Coupe","horsepower":700,"price":300000,"mileage":2000,"seating":2},
-  {"make":"BMW","model":"M4","bodyType":"Coupe","horsepower":400,"price":100000,"mileage":30000,"seating":4},
-  {"make":"Acura","model":"Integra","bodyType":"Sedan","horsepower":200,"price":25000,"mileage":50000,"seating":5},
-  {"make":"Honda","model":"Civic","bodyType":"Hatchback","horsepower":150,"price":15000,"mileage":50000,"seating":5},
-  {"make":"Lamborghini","model":"Aventador","bodyType":"Coupe","horsepower":700,"price":1500000,"mileage":25000,"seating":2}
+  {
+    "make": "Toyota",
+    "model": "Corolla",
+    "bodyType": "Sedan",
+    "horsepower": 139,
+    "price": 18000,
+    "mileage": 60000,
+    "seating": 5,
+    "imageUrl": "https://media.ed.edmunds-media.com/toyota/corolla/2026/oem/2026_toyota_corolla_sedan_xse_fq_oem_1_1600.jpg"
+  },
+  {
+    "make": "Toyota",
+    "model": "RAV4",
+    "bodyType": "SUV",
+    "horsepower": 203,
+    "price": 28500,
+    "mileage": 54000,
+    "seating": 5,
+    "imageUrl": "https://media.ed.edmunds-media.com/toyota/rav4-hybrid/2025/oem/2025_toyota_rav4-hybrid_4dr-suv_se_fq_oem_1_1600.jpg"
+  },
+  {
+    "make": "Toyota",
+    "model": "Tacoma",
+    "bodyType": "Truck",
+    "horsepower": 278,
+    "price": 35000,
+    "mileage": 30000,
+    "seating": 5,
+    "imageUrl": "https://toyotacanada.scene7.com/is/image/toyotacanada/20_Tacoma_TRD_Off-Road_Cement_1?ts=1688694123022&$Media-Large$&dpr=off"
+  },
+  {
+    "make": "Honda",
+    "model": "Civic",
+    "bodyType": "Hatchback",
+    "horsepower": 158,
+    "price": 15000,
+    "mileage": 50000,
+    "seating": 5,
+    "imageUrl": "https://media.ed.edmunds-media.com/honda/civic/2023/oem/2023_honda_civic_4dr-hatchback_sport-touring_fq_oem_1_600.jpg"
+  },
+  {
+    "make": "Honda",
+    "model": "CR-V",
+    "bodyType": "SUV",
+    "horsepower": 190,
+    "price": 26000,
+    "mileage": 67000,
+    "seating": 5,
+    "imageUrl": "https://www.usnews.com/object/image/00000198-779d-d903-a1fa-ffbdf83f0000/2026-honda-cr-v-ex-l-front-three-quarter.jpg?update-time=1754353497590&size=responsiveGallery&format=webp"
+  },
+  {
+    "make": "Honda",
+    "model": "Accord",
+    "bodyType": "Sedan",
+    "horsepower": 192,
+    "price": 22000,
+    "mileage": 45000,
+    "seating": 5,
+    "imageUrl": "https://www.cnet.com/a/img/resize/e0b9831424d180fcac75abbb4d0b6ef817e31d79/hub/2021/01/07/a9cb3648-5bc3-49ed-8bad-4c88b231a4ec/2021-honda-accord-008.jpg?auto=webp&fit=crop&height=675&width=1200"
+  },
+  {
+    "make": "Ford",
+    "model": "Mustang",
+    "bodyType": "Coupe",
+    "horsepower": 450,
+    "price": 44000,
+    "mileage": 12000,
+    "seating": 4,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=ford&modelFamily=mustang&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Ford",
+    "model": "F-150",
+    "bodyType": "Truck",
+    "horsepower": 400,
+    "price": 38000,
+    "mileage": 45000,
+    "seating": 6,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=ford&modelFamily=f-150&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Ford",
+    "model": "Escape",
+    "bodyType": "SUV",
+    "horsepower": 181,
+    "price": 24000,
+    "mileage": 55000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=ford&modelFamily=escape&paintId=color-white&angle=1"
+  },
+  {
+    "make": "BMW",
+    "model": "3 Series",
+    "bodyType": "Sedan",
+    "horsepower": 255,
+    "price": 22000,
+    "mileage": 91000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=bmw&modelFamily=3-series&paintId=color-white&angle=1"
+  },
+  {
+    "make": "BMW",
+    "model": "X5",
+    "bodyType": "SUV",
+    "horsepower": 335,
+    "price": 48000,
+    "mileage": 38000,
+    "seating": 7,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=bmw&modelFamily=x5&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Mazda",
+    "model": "CX-5",
+    "bodyType": "SUV",
+    "horsepower": 187,
+    "price": 24500,
+    "mileage": 82000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=mazda&modelFamily=cx-5&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Mazda",
+    "model": "Mazda3",
+    "bodyType": "Hatchback",
+    "horsepower": 186,
+    "price": 19000,
+    "mileage": 40000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=mazda&modelFamily=mazda3&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Hyundai",
+    "model": "Tucson",
+    "bodyType": "SUV",
+    "horsepower": 181,
+    "price": 21000,
+    "mileage": 73000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=hyundai&modelFamily=tucson&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Hyundai",
+    "model": "Elantra",
+    "bodyType": "Sedan",
+    "horsepower": 147,
+    "price": 16500,
+    "mileage": 62000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=hyundai&modelFamily=elantra&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "bodyType": "Truck",
+    "horsepower": 355,
+    "price": 42000,
+    "mileage": 28000,
+    "seating": 6,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=chevrolet&modelFamily=silverado&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "bodyType": "Coupe",
+    "horsepower": 455,
+    "price": 38000,
+    "mileage": 15000,
+    "seating": 4,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=chevrolet&modelFamily=camaro&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Kia",
+    "model": "Sportage",
+    "bodyType": "SUV",
+    "horsepower": 187,
+    "price": 20000,
+    "mileage": 68000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=kia&modelFamily=sportage&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Kia",
+    "model": "Soul",
+    "bodyType": "Hatchback",
+    "horsepower": 147,
+    "price": 17000,
+    "mileage": 55000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=kia&modelFamily=soul&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Volkswagen",
+    "model": "Golf",
+    "bodyType": "Hatchback",
+    "horsepower": 158,
+    "price": 21000,
+    "mileage": 44000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=volkswagen&modelFamily=golf&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Volkswagen",
+    "model": "Tiguan",
+    "bodyType": "SUV",
+    "horsepower": 184,
+    "price": 27000,
+    "mileage": 50000,
+    "seating": 7,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=volkswagen&modelFamily=tiguan&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Subaru",
+    "model": "Outback",
+    "bodyType": "SUV",
+    "horsepower": 182,
+    "price": 25000,
+    "mileage": 60000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=subaru&modelFamily=outback&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Subaru",
+    "model": "WRX",
+    "bodyType": "Sedan",
+    "horsepower": 271,
+    "price": 29000,
+    "mileage": 35000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=subaru&modelFamily=wrx&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Nissan",
+    "model": "Altima",
+    "bodyType": "Sedan",
+    "horsepower": 188,
+    "price": 19500,
+    "mileage": 70000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=nissan&modelFamily=altima&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Nissan",
+    "model": "Rogue",
+    "bodyType": "SUV",
+    "horsepower": 181,
+    "price": 23000,
+    "mileage": 58000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=nissan&modelFamily=rogue&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Ram",
+    "model": "1500",
+    "bodyType": "Truck",
+    "horsepower": 395,
+    "price": 40000,
+    "mileage": 32000,
+    "seating": 6,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=ram&modelFamily=1500&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Acura",
+    "model": "Integra",
+    "bodyType": "Sedan",
+    "horsepower": 200,
+    "price": 25000,
+    "mileage": 50000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=acura&modelFamily=integra&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Mercedes",
+    "model": "C-Class",
+    "bodyType": "Sedan",
+    "horsepower": 255,
+    "price": 35000,
+    "mileage": 40000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=mercedes-benz&modelFamily=c-class&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Mercedes",
+    "model": "GLE",
+    "bodyType": "SUV",
+    "horsepower": 362,
+    "price": 62000,
+    "mileage": 25000,
+    "seating": 7,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=mercedes-benz&modelFamily=gle&paintId=color-white&angle=1"
+  },
+  {
+    "make": "Lexus",
+    "model": "IS",
+    "bodyType": "Sedan",
+    "horsepower": 241,
+    "price": 32000,
+    "mileage": 35000,
+    "seating": 5,
+    "imageUrl": "https://cdn.imagin.studio/getimage?customer=img&make=lexus&modelFamily=is&paintId=color-white&angle=1"
+  }
 ]

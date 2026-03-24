@@ -35,7 +35,10 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
         <p>${result.make} ${result.model}</p>
         <p>Price: $${result.price}</p>
         <p>Horsepower: ${result.horsepower}</p>
-    `;
+        `;
+            document.getElementById("result").addEventListener("click", () => {
+                window.location.href = `car-details.html?id=${encodeURIComponent(result.id)}`;
+            });
         })
         .catch(err => {
             console.error(err)

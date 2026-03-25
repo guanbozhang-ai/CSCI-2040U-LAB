@@ -24,6 +24,15 @@ public class User {
     }
 
     /**
+     * Initializes a new User object from a String in json format sent by a .js script
+     *
+     *
+     */
+    public User(String json) {
+        int costValue = 0;
+    }
+
+    /**
      * Manually create a User object given all required values.
      *
      * @param costValue

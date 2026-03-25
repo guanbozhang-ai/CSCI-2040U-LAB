@@ -219,80 +219,34 @@ public class Car {
     public static Car fromJson(String json) throws Exception {
         json = json.trim(); // Remove extra spaces
 
-        int id = extractInt(json, "id");
-        int year = extractInt(json, "year");
-        String make  = extractString(json, "make");
-        String model = extractString(json, "model");
-        int price  = extractInt(json, "price");
-        String bodyType = extractString(json, "bodyType");
+        int id = JSONHelper.extractInt(json, "id");
+        int year = JSONHelper.extractInt(json, "year");
+        String make  = JSONHelper.extractString(json, "make");
+        String model = JSONHelper.extractString(json, "model");
+        int price  = JSONHelper.extractInt(json, "price");
+        String bodyType = JSONHelper.extractString(json, "bodyType");
 
-        String trim  = extractString(json, "trim");
-        String extColour  = extractString(json, "extColour");
-        String intColour  = extractString(json, "intColour");
-        String fuelType  = extractString(json, "fuelType");
-        int horsepower  = extractInt(json, "horsepower");
+        String trim  = JSONHelper.extractString(json, "trim");
+        String extColour  = JSONHelper.extractString(json, "extColour");
+        String intColour  = JSONHelper.extractString(json, "intColour");
+        String fuelType  = JSONHelper.extractString(json, "fuelType");
+        int horsepower  = JSONHelper.extractInt(json, "horsepower");
 
-        int mileage  = extractInt(json, "mileage");
-        double fuelEconomy  = extractDouble(json, "fuelEconomy");
-        String engineConfiguration  = extractString(json, "engineConfiguration");
-        String drivetrainConfiguration  = extractString(json, "drivetrainConfiguration");
-        int seating  = extractInt(json, "seating");
+        int mileage  = JSONHelper.extractInt(json, "mileage");
+        double fuelEconomy  = JSONHelper.extractDouble(json, "fuelEconomy");
+        String engineConfiguration  = JSONHelper.extractString(json, "engineConfiguration");
+        String drivetrainConfiguration  = JSONHelper.extractString(json, "drivetrainConfiguration");
+        int seating  = JSONHelper.extractInt(json, "seating");
 
-        int cylinders  = extractInt(json, "cylinders");
-        int gears  = extractInt(json, "gears");
-        String transmission  = extractString(json, "transmission");
-        String imageURL  = extractString(json, "imageURL");
+        int cylinders  = JSONHelper.extractInt(json, "cylinders");
+        int gears  = JSONHelper.extractInt(json, "gears");
+        String transmission  = JSONHelper.extractString(json, "transmission");
+        String imageURL  = JSONHelper.extractString(json, "imageURL");
 
         return new Car(id, year, make, model, price, bodyType,
                 trim, extColour, intColour, fuelType, horsepower,
                 mileage, fuelEconomy, engineConfiguration, drivetrainConfiguration, seating,
                 cylinders, gears, transmission, imageURL); // Create new Car object
-    }
-
-    /**
-     * Extracts the value associated with a key in a given .json format String
-     * @param json String containing the .json information
-     * @param key The String key
-     * @return The String value associated with the given key
-     */
-    private static String extractString(String json, String key) {
-
-        // Find "key": then skip to opening quote (handles optional space after colon)
-        String search = "\"" + key + "\":";
-
-        int colonEnd = json.indexOf(search) + search.length(); // Position after the colon
-        int start = json.indexOf("\"", colonEnd) + 1;          // Skip to char after opening quote
-        int end = json.indexOf("\"", start);                    // End at closing quote
-
-        return json.substring(start, end).trim();
-    }
-
-    private static int extractInt(String json, String key) {
-        // Create pattern like: "make":"
-        String search = "\"" + key + "\":";
-
-        int start = json.indexOf(search) + search.length(); // Start position
-
-        int end = json.indexOf(",", start); // End at comma separator
-        if(end == -1) {
-            end = json.indexOf("}", start); // End at the end of json if no more elements
-        }
-
-        return Integer.parseInt(json.substring(start, end).trim()); // Return extracted text
-    }
-
-    private static double extractDouble(String json, String key) {
-        // Create pattern like: "make":"
-        String search = "\"" + key + "\":";
-
-        int start = json.indexOf(search) + search.length(); // Start position
-
-        int end = json.indexOf(",", start); // End at comma separator
-        if(end == -1) {
-            end = json.indexOf("}", start); // End at the end of json if no more elements
-        }
-
-        return Double.parseDouble(json.substring(start, end).trim()); // Return extracted text
     }
 
 }

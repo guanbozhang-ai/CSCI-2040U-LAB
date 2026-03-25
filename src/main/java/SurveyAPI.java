@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class SurveyAPI {
     public static class StockSingleton {
         private static CarStock stock = null;
@@ -11,7 +13,16 @@ public class SurveyAPI {
     }
     public static String match(String userJson) {
         User user = User.fromJson(userJson);
-        Car car = StockSingleton.getInstance().findBestMatch(user);
-        return car.toJson();
+        ArrayList<Car> cars = StockSingleton.getInstance().findBestMatch(user);
+        StringBuilder carsJson = new StringBuilder("{");
+
+        for(int i = 0; i < 5; i++) {
+            carsJson.append(cars.get(i).toJson());
+            if(i < 4) {
+                carsJson.append(",");
+            }
+        }
+
+        return carsJson.toString();
     }
 }

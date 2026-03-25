@@ -6,6 +6,7 @@ public class MatchingDemo {
         System.out.println("1. Add a car");
         System.out.println("2. List all cars in stock");
         System.out.println("3. Take survey to match user to a car");
+        System.out.println("4. Test matching algorithm with premade user");
         System.out.println("0. Exit");
     }
 
@@ -81,6 +82,14 @@ public class MatchingDemo {
         }
     }
 
+    public static void testMatch(CarStock carStock) {
+        User user = new User(20000, 5, 200, 3,
+                0, 5, 5, 2,
+                4, 5, 2020, 4,
+                new ArrayList<>(), new ArrayList<>(), null, null);
+        System.out.println(carStock.findBestMatch(user));
+    }
+
     public static void main(String[] args) {
         int option = 100;
         Scanner scanner = new Scanner(System.in);
@@ -104,7 +113,11 @@ public class MatchingDemo {
 
                 case 3:
                     User user = new User();
-                    System.out.println("Best match for this user: " + carStock.findBestMatch(user));
+                    System.out.println("Best matches for this user: " + carStock.findBestMatch(user));
+                    break;
+
+                case 4:
+                    testMatch(carStock);
                     break;
 
                 default:

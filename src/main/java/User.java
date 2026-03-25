@@ -24,15 +24,6 @@ public class User {
     }
 
     /**
-     * Initializes a new User object from a String in json format sent by a .js script
-     *
-     *
-     */
-    public User(String json) {
-        int costValue = 0;
-    }
-
-    /**
      * Manually create a User object given all required values.
      *
      * @param costValue
@@ -75,6 +66,43 @@ public class User {
         if(Car.TRANSMISSIONS.contains(preferredTransmission)) {
             this.preferredTransmission = preferredTransmission;
         }
+    }
+
+    /**
+     * Returns a new User object made from a String in json format passed from a .js script
+     *
+     * @param json The json representing the User
+     * @return The constructed User
+     */
+    public static User fromJson(String json) {
+        int costValue = JSONHelper.extractInt(json, "costValue");
+        double costImportance = JSONHelper.extractDouble(json, "costImportance");
+
+        int sportinessValue = JSONHelper.extractInt(json, "sportinessValue");
+        double sportinessImportance = JSONHelper.extractDouble(json, "sportinessImportance");
+
+        int mileageValue = JSONHelper.extractInt(json, "mileageValue");
+        double mileageImportance = JSONHelper.extractDouble(json, "mileageImportance");
+
+        int seatingValue = JSONHelper.extractInt(json, "seatingValue");
+        double seatingImportance = JSONHelper.extractDouble(json, "seatingImportance");
+
+        double economyValue = JSONHelper.extractDouble(json, "economyValue");
+        double economyImportance = JSONHelper.extractDouble(json, "economyImportance");
+
+        int recencyValue = JSONHelper.extractInt(json, "recencyValue");
+        double recencyImportance = JSONHelper.extractDouble(json, "recencyImportance");
+
+        ArrayList<String> preferredMakes = JSONHelper.extractStringList(json, "preferredMakes");
+        ArrayList<String> preferredBodyTypes = JSONHelper.extractStringList(json, "preferredBodyTypes");
+
+        String preferredFuelType = JSONHelper.extractString(json, "preferredFuelType");
+        String preferredTransmission = JSONHelper.extractString(json, "preferredTransmission");
+
+        return new User(costValue, costImportance, sportinessValue, sportinessImportance,
+                mileageValue, mileageImportance, seatingValue, seatingImportance,
+                economyValue, economyImportance, recencyValue, recencyImportance,
+                preferredMakes, preferredBodyTypes, preferredFuelType, preferredTransmission);
     }
 
     public UserAttributeMap getUserAttributes() {

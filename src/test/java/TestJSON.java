@@ -19,6 +19,7 @@ public class TestJSON {
         String json5 = "{\"foo\":\"bar\", " +
                 "\"makes\":[\"Toyota\"]," +
                 "\"foo2\":2.0}";
+
         ArrayList<String> list = new ArrayList<>();
         list.add("Toyota");
         assertEquals(list, JSONHelper.extractStringList(json4, "makes"));

@@ -3,104 +3,117 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Car Match Survey</title>
+    <title>Smart Car Match</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logo">GIT-IT-DONE</div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="cars.html">Car List</a>
-            <a href="surver.html">Smart Match</a>
-            <a href="login.html" class="nav-button">Login</a>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="logo">GIT-IT-DONE</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cars.html">Car List</a>
+        <a href="surver.html">Smart Match</a>
+        <a href="login.html" class="nav-button">Login</a>
+    </div>
+</nav>
 
-    <section class="survey-container">
+<section class="survey-container">
 
-        <h1>Smart Car Match Survey</h1>
-        <p>Answer a few questions to help us match the perfect car for you.</p>
+    <h1>Smart Car Match Survey</h1>
+    <p>Answer the following questions to find your best car match.</p>
 
-        <form id="surveyForm">
+    <form id="surveyForm">
+        <h3>Price Preference</h3>
 
-            <h3>Price Preference</h3>
+        <label for="price">Ideal price point ($)</label>
+        <input type="number" id="price" name="price" required min="1">
 
-            <label for="price">Ideal price point ($)</label>
-            <input type="number" id="price" name="price">
-
-            <label for="priceImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="priceImportance" name="priceImportance">
-
-
-            <h3>Performance</h3>
-
-            <label for="horsepower">Desired horsepower</label>
-            <input type="number" id="horsepower" name="horsepower">
-
-            <label for="powerImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="powerImportance" name="powerImportance">
+        <label for="priceImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="priceImportance" name="priceImportance" required>
 
 
-            <h3>Mileage</h3>
+        <h3>Performance</h3>
 
-            <label for="mileage">Maximum kilometres driven</label>
-            <input type="number" id="mileage" name="mileage">
+        <label for="horsepower">Desired horsepower</label>
+        <input type="number" id="horsepower" name="horsepower" required min="1">
 
-            <label for="mileageImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="mileageImportance" name="mileageImportance">
-
-
-            <h3>Seating</h3>
-
-            <label for="seats">How many seats?</label>
-            <input type="number" id="seats" name="seats">
-
-            <label for="seatImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="seatImportance" name="seatImportance">
-
-            <h3>preferred brands</h3>
-            <label for="makes">Select preferred brands</label>
-            <select id="makes" name="makes">
-
-                <option>Toyota</option>
-                <option>Honda</option>
-                <option>BMW</option>
-                <option>Audi</option>
-                <option>Ford</option>
-
-            </select>
-
-            <h3>Body Type</h3>
-            <label for="bodyType">Preferred Body Type</label>
-            <select id="bodyType" name="bodyType">
-
-                <option>Sedan</option>
-                <option>SUV</option>
-                <option>Hatchback</option>
-                <option>Truck</option>
-                <option>Coupe</option>
-
-            </select>
+        <label for="powerImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="powerImportance" name="powerImportance" required>
 
 
+        <h3>Mileage</h3>
+
+        <label for="mileage">Maximum kilometres driven</label>
+        <input type="number" id="mileage" name="mileage" required min="1">
+
+        <label for="mileageImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="mileageImportance" name="mileageImportance" required>
+
+
+        <h3>Seating</h3>
+
+        <label for="seats">How many seats would you like?</label>
+        <input type="number" id="seats" name="seats" required min="1">
+
+        <label for="seatImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="seatImportance" name="seatImportance" required>
+
+
+        <h3>Fuel Economy</h3>
+
+        <label for="economy">Desired fuel economy (L/100km)</label>
+        <input type="number" step="0.1" id="economy" name="economy" required min="1">
+
+        <label for="economyImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="economyImportance" name="economyImportance" required>
+
+
+        <h3>Year</h3>
+
+        <label for="year">Preferred car year</label>
+        <input type="number" id="year" name="year" required min="1900">
+
+        <label for="yearImportance">Importance (1-5)</label>
+        <input type="number" min="1" max="5" id="yearImportance" name="yearImportance" required>
+
+
+        <h3>Preferred Brand</h3>
+
+        <label for="makes">Select preferred brand</label>
+        <select id="makes" name="makes" required></select>
+
+
+        <h3>Body Type</h3>
+
+        <label for="bodyType">Preferred body type</label>
+        <select id="bodyType" name="bodyType" required></select>
+
+
+        <h3>Fuel Type (optional)</h3>
+
+        <label for="fuelType">Preferred fuel type</label>
+        <select id="fuelType" name="fuelType">
+            <option value="">No preference</option></select>
+
+
+        <h3>Transmission (optional)</h3>
+
+        <label for="transmission">Preferred transmission</label>
+        <select id="transmission" name="transmission">
+            <option value="">No preference</option></select>
 
         <br><br>
 
         <button type="submit" class="btn-primary">Find My Car</button>
         <div id="result"></div>
 
+    </form>
 
-        </form>
+</section>
 
-    </section>
-
-    <script src="js/surver.js"></script>
-
+<script src="js/surver.js"></script>
 
 </body>
-
 </html>

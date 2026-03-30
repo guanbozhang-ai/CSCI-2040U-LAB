@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ==========================
-// will read cars.json for get select
+//read car.json get select
 // ==========================
 async function populateSurveyOptions() {
 
@@ -32,7 +32,7 @@ async function populateSurveyOptions() {
 
 
 // ==========================
-// add select
+//fill select
 // ==========================
 function fillSelect(id, values, required) {
 
@@ -53,7 +53,9 @@ function fillSelect(id, values, required) {
 }
 
 
-
+// ==========================
+// send to api
+// ==========================
 function handleSubmit(e) {
 
     e.preventDefault();
@@ -108,19 +110,29 @@ function handleSubmit(e) {
             .then(res => res.json())
             .then(result => {
 
-                console.log("Match result:", result);
+                const tbody = document.querySelector("#resultTable tbody");
 
-                document.getElementById("result").innerHTML = `
-                <h2>Best Match:</h2>
-                <p>${result.make} ${result.model}</p>
-                <p>Price: $${Number(result.price).toLocaleString()}</p>
-                <p>Horsepower: ${result.horsepower}</p>
+
+                tbody.innerHTML = "";
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                <td>${result.make}</td>
+                <td>${result.model}</td>
+                <td>${result.bodyType}</td>
+                <td>${result.horsepower}</td>
+                <td>$${Number(result.price).toLocaleString()}</td>
+                <td>${result.mileage}</td>
+                <td>${result.seating}</td>
             `;
 
-                document.getElementById("result").onclick = () => {
-                    window.location.href = `car-details.html?id=${encodeURIComponent(result.id)}`;
-                };
 
+                row.addEventListener("click", () => {
+                    window.location.href = `car-details.html?id=${result.id}`;
+                });
+
+                tbody.appendChild(row);
             })
             .catch(err => {
                 console.error(err);

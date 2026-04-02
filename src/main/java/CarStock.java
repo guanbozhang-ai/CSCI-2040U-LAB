@@ -56,21 +56,36 @@ public class CarStock {
 
     /**
      * Uses the Euclidean distance between the attribute vectors of a Car
-     * and User to determine which Car is the best match for a given User.
+     * and User to determine which 5 Cars are the best match for a given User.
      * @param user The User to be matched to a car
-     * @return The Car closest to the User's needs in the CarStock
+     * @return The 5 Cars closest to the User's needs in the CarStock
      */
-    public Car findBestMatch(User user) {
-        double bestMatch = Double.MAX_VALUE;
-        Car bestCar = null;
+    public ArrayList<Car> findBestMatch(User user) {
+        ArrayList<Double> bestMatches = new ArrayList<>();
+        ArrayList<Car> bestCars = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            bestMatches.add(Double.MAX_VALUE);
+            bestCars.add(null);
+        }
+
         for (Car car : cars) {
             double distance = user.match(car);
-            if(distance < bestMatch) {
-                bestMatch = distance;
-                bestCar = car;
+            if(distance < bestMatches.get(4)) {
+
+                for(int i = 0; i < 5; i++) {
+                    if(distance < bestMatches.get(i)) {
+                        bestMatches.add(i, distance);
+                        bestMatches.removeLast();
+                        bestCars.add(i, car);
+                        bestCars.removeLast();
+                        break;
+                    }
+                }
+
             }
         }
-        return bestCar;
+
+        return bestCars;
     }
 
     /**

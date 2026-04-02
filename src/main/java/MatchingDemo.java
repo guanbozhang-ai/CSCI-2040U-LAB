@@ -87,7 +87,7 @@ public class MatchingDemo {
                 0, 5, 5, 2,
                 4, 5, 2020, 4,
                 new ArrayList<>(), new ArrayList<>(), null, null);
-        System.out.println(carStock.findBestMatch(user));
+        System.out.println(carStock.findBestMatch(3, user));
     }
 
     public static void main(String[] args) {
@@ -113,7 +113,9 @@ public class MatchingDemo {
 
                 case 3:
                     User user = new User();
-                    System.out.println("Best matches for this user: " + carStock.findBestMatch(user));
+                    System.out.println("How many cars to match?");
+                    int num = scanner.nextInt();
+                    System.out.println("Best matches for this user: " + carStock.findBestMatch(num, user));
                     break;
 
                 case 4:

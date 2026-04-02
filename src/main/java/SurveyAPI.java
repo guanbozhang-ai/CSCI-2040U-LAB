@@ -13,12 +13,13 @@ public class SurveyAPI {
     }
     public static String match(String userJson) {
         User user = User.fromJson(userJson);
-        ArrayList<Car> cars = StockSingleton.getInstance().findBestMatch(user);
+        int num = JSONHelper.extractInt(userJson, "count");
+        ArrayList<Car> cars = StockSingleton.getInstance().findBestMatch(num, user);
         StringBuilder carsJson = new StringBuilder("{");
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < num; i++) {
             carsJson.append(cars.get(i).toJson());
-            if(i < 4) {
+            if(i < num - 1) {
                 carsJson.append(",");
             }
         }

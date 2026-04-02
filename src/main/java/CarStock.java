@@ -60,19 +60,19 @@ public class CarStock {
      * @param user The User to be matched to a car
      * @return The 5 Cars closest to the User's needs in the CarStock
      */
-    public ArrayList<Car> findBestMatch(User user) {
+    public ArrayList<Car> findBestMatch(int num, User user) {
         ArrayList<Double> bestMatches = new ArrayList<>();
         ArrayList<Car> bestCars = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < num; i++) {
             bestMatches.add(Double.MAX_VALUE);
             bestCars.add(null);
         }
 
         for (Car car : cars) {
             double distance = user.match(car);
-            if(distance < bestMatches.get(4)) {
+            if(distance < bestMatches.get(num - 1)) {
 
-                for(int i = 0; i < 5; i++) {
+                for(int i = 0; i < num; i++) {
                     if(distance < bestMatches.get(i)) {
                         bestMatches.add(i, distance);
                         bestMatches.removeLast();

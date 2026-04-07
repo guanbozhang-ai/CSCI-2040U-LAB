@@ -14,6 +14,7 @@ public class SurveyAPI {
 
     public static String match(String userJson) {
 
+
         try {
             User user = User.fromJson(userJson);
 
@@ -34,7 +35,6 @@ public class SurveyAPI {
 
             int limit = Math.min(num, cars.size());
 
-            // ✅ 关键：数组
             StringBuilder carsJson = new StringBuilder("[");
 
             for (int i = 0; i < limit; i++) {
@@ -54,6 +54,7 @@ public class SurveyAPI {
             e.printStackTrace();
             return "[]";
         }
+
     }
 
 }

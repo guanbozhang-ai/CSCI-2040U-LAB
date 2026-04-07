@@ -36,6 +36,7 @@ public class API {
             System.out.println("Converted JSON: " + backendJson);
 
             String result = SurveyAPI.match(backendJson);
+            System.out.println("RESULT: " + result);
 
             exchange.getResponseHeaders().add("Content-Type", "application/json");
             exchange.sendResponseHeaders(200, result.getBytes().length);

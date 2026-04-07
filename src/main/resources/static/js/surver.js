@@ -1,9 +1,12 @@
 
-document.getElementById("surveyForm").addEventListener("submit", function(e){
+const surveyForm = document.getElementById("surveyForm");
+const resultDiv = document.getElementById("result");
 
-    e.preventDefault()
+surveyForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const formData = new FormData(this)
+    const formData = new FormData(this);
+    const preferredMake = formData.get("makes");
 
     const surveyData = {
         price: Number(formData.get("price")),
@@ -14,9 +17,14 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
         mileageImportance: Number(formData.get("mileageImportance")),
         seats: Number(formData.get("seats")),
         seatImportance: Number(formData.get("seatImportance")),
-        makes: [formData.get("makes")],
+        makes: preferredMake ? [preferredMake] : [],
         bodyType: formData.get("bodyType")
-    }
+    };
+
+    resultDiv.style.display = "block";
+    resultDiv.classList.remove("is-clickable");
+    resultDiv.innerHTML = "<strong>Processing...</strong> matching your preferences with our inventory.";
+    resultDiv.onclick = null;
 
     fetch("http://localhost:8080/api/match", {
         method: "POST",
@@ -25,25 +33,29 @@ document.getElementById("surveyForm").addEventListener("submit", function(e){
         },
         body: JSON.stringify(surveyData)
     })
-        .then(res => res.json())
-        .then(result => {
-
-            console.log("Match result:", result)
-
-            document.getElementById("result").innerHTML = `
-        <h2>Best Match:</h2>
-        <p>${result.make} ${result.model}</p>
-        <p>Price: $${result.price}</p>
-        <p>Horsepower: ${result.horsepower}</p>
-        `;
-            document.getElementById("result").addEventListener("click", () => {
-                window.location.href = `car-details.html?id=${encodeURIComponent(result.id)}`;
-            });
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error("Failed to fetch car match");
+            }
+            return res.json();
         })
-        .catch(err => {
-            console.error(err)
-            alert("Error connecting to server")
-        })
+        .then((result) => {
+            resultDiv.innerHTML = `
+                <h2>Best Match:</h2>
+                <p>${result.make} ${result.model}</p>
+                <p>Price: $${result.price}</p>
+                <p>Horsepower: ${result.horsepower}</p>
+            `;
 
-    showResult(bestCar);
+            if (result.id !== undefined && result.id !== null) {
+                resultDiv.classList.add("is-clickable");
+                resultDiv.onclick = () => {
+                    window.location.href = `car-details.html?id=${encodeURIComponent(result.id)}`;
+                };
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            resultDiv.innerHTML = '<strong>Error.</strong> We could not match a car right now. Please try again.';
+        });
 });

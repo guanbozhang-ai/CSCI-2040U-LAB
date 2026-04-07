@@ -64,7 +64,8 @@ body {
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 12px 25px;
     text-decoration: none;
     margin: 10px;
@@ -99,26 +100,96 @@ body {
     color: white;
 }
 
-.survey-container{
-    max-width:600px;
-    margin:80px auto;
-    text-align:center;
+.survey-page {
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-.question{
-    margin:25px 0;
+.survey-page .survey-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
-.question label{
-    display:block;
-    margin-bottom:10px;
-    font-weight:bold;
+.survey-page .survey-container h1 {
+    margin-top: 0;
+    color: #2c3e50;
 }
 
-select{
-    width:100%;
-    padding:10px;
-    font-size:16px;
+.survey-page .survey-container p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.survey-page .survey-container h3 {
+    margin-top: 30px;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+    color: #2c3e50;
+}
+
+.survey-page form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.survey-page form input[type="number"],
+.survey-page form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.survey-page form input[type="number"]:focus,
+.survey-page form select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.survey-page .btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.survey-page .btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.survey-page #result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #eaf2f8;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+    display: none;
+    color: #2c3e50;
+}
+
+.survey-page #result a {
+    color: #3498db;
+}
+
+.survey-page #result.is-clickable {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -135,6 +206,11 @@ select{
 
     .nav-links a {
         margin: 0 10px;
+    }
+
+    .survey-page .survey-container {
+        margin: 24px 16px;
+        padding: 24px 20px;
     }
 
     .features {

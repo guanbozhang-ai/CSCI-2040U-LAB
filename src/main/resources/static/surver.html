@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Match Survey</title>
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
-<body>
+<body class="survey-page">
 
     <nav class="navbar">
         <div class="logo">GIT-IT-DONE</div>
@@ -28,71 +28,59 @@
         <form id="surveyForm">
 
             <h3>Price Preference</h3>
-
             <label for="price">Ideal price point ($)</label>
-            <input type="number" id="price" name="price">
+            <input type="number" id="price" name="price" placeholder="e.g. 25000">
 
             <label for="priceImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="priceImportance" name="priceImportance">
+            <input type="number" min="0" max="5" id="priceImportance" name="priceImportance" placeholder="3">
 
 
             <h3>Performance</h3>
-
             <label for="horsepower">Desired horsepower</label>
-            <input type="number" id="horsepower" name="horsepower">
+            <input type="number" id="horsepower" name="horsepower" placeholder="e.g. 200">
 
             <label for="powerImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="powerImportance" name="powerImportance">
+            <input type="number" min="0" max="5" id="powerImportance" name="powerImportance" placeholder="3">
 
 
             <h3>Mileage</h3>
-
             <label for="mileage">Maximum kilometres driven</label>
-            <input type="number" id="mileage" name="mileage">
+            <input type="number" id="mileage" name="mileage" placeholder="e.g. 50000">
 
             <label for="mileageImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="mileageImportance" name="mileageImportance">
+            <input type="number" min="0" max="5" id="mileageImportance" name="mileageImportance" placeholder="3">
 
 
             <h3>Seating</h3>
-
             <label for="seats">How many seats?</label>
-            <input type="number" id="seats" name="seats">
+            <input type="number" id="seats" name="seats" placeholder="e.g. 5">
 
             <label for="seatImportance">Importance (0-5)</label>
-            <input type="number" min="0" max="5" id="seatImportance" name="seatImportance">
+            <input type="number" min="0" max="5" id="seatImportance" name="seatImportance" placeholder="3">
 
-            <h3>preferred brands</h3>
+            <h3>Preferences</h3>
             <label for="makes">Select preferred brands</label>
             <select id="makes" name="makes">
-
-                <option>Toyota</option>
-                <option>Honda</option>
-                <option>BMW</option>
-                <option>Audi</option>
-                <option>Ford</option>
-
+                <option value="">Any Brand</option>
+                <option value="toyota">Toyota</option>
+                <option value="honda">Honda</option>
+                <option value="bmw">BMW</option>
+                <option value="audi">Audi</option>
+                <option value="ford">Ford</option>
             </select>
 
-            <h3>Body Type</h3>
             <label for="bodyType">Preferred Body Type</label>
             <select id="bodyType" name="bodyType">
-
-                <option>Sedan</option>
-                <option>SUV</option>
-                <option>Hatchback</option>
-                <option>Truck</option>
-                <option>Coupe</option>
-
+                <option value="">Any Body Type</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="truck">Truck</option>
+                <option value="coupe">Coupe</option>
             </select>
 
-
-
-        <br><br>
-
-        <button type="submit" class="btn-primary">Find My Car</button>
-        <div id="result"></div>
-
+            <button type="submit" class="btn-primary">Find My Car</button>
+            <div id="result"></div>
 
         </form>
 

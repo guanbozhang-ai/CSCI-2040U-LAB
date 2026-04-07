@@ -111,29 +111,32 @@ function handleSubmit(e) {
             .then(result => {
 
                 const tbody = document.querySelector("#resultTable tbody");
-
-
                 tbody.innerHTML = "";
 
-                const row = document.createElement("tr");
 
-                row.innerHTML = `
-                <td>${result.make}</td>
-                <td>${result.model}</td>
-                <td>${result.bodyType}</td>
-                <td>${result.horsepower}</td>
-                <td>$${Number(result.price).toLocaleString()}</td>
-                <td>${result.mileage}</td>
-                <td>${result.seating}</td>
-            `;
+                result.forEach(car => {
 
+                    const row = document.createElement("tr");
 
-                row.addEventListener("click", () => {
-                    window.location.href = `car-details.html?id=${result.id}`;
+                    row.innerHTML = `
+            <td>${car.make}</td>
+            <td>${car.model}</td>
+            <td>${car.bodyType}</td>
+            <td>${car.horsepower}</td>
+            <td>$${Number(car.price).toLocaleString()}</td>
+            <td>${car.mileage}</td>
+            <td>${car.seating}</td>
+        `;
+
+                    // ✅ 点击跳详情页
+                    row.addEventListener("click", () => {
+                        window.location.href = `car-details.html?id=${car.id}`;
+                    });
+
+                    tbody.appendChild(row);
                 });
-
-                tbody.appendChild(row);
             })
+
             .catch(err => {
                 console.error(err);
                 alert("Error connecting to server");

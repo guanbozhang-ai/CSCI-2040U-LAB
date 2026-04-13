@@ -3,8 +3,6 @@ const makeSelect = document.getElementById("make");
 const bodyTypeSelect = document.getElementById("bodyType");
 const maxPriceInput = document.getElementById("maxPrice");
 const applyFiltersButton = document.getElementById("applyFilters");
-const apiHost = window.location.hostname || "localhost";
-const carsEndpoint = `${window.location.protocol === "file:" ? "http:" : window.location.protocol}//${apiHost}:8080/api/cars`;
 let allCars = [];
 
 function renderCars(cars) {
@@ -62,25 +60,14 @@ function populateSelect(selectElement, values, allLabel) {
     });
 }
 
-async function fetchCars(filters = {}) {
-    const searchParams = new URLSearchParams();
-
-    Object.entries(filters).forEach(([key, value]) => {
-        if (value !== "") {
-            searchParams.set(key, value);
-        }
+// ✅ Client-side filtering — no backend needed
+function applyFilters(filters) {
+    return allCars.filter(car => {
+        if (filters.make && car.make.toLowerCase() !== filters.make.toLowerCase()) return false;
+        if (filters.bodyType && car.bodyType.toLowerCase() !== filters.bodyType.toLowerCase()) return false;
+        if (filters.maxPrice && Number(car.price) > Number(filters.maxPrice)) return false;
+        return true;
     });
-
-    const requestUrl = searchParams.toString()
-        ? `${carsEndpoint}?${searchParams.toString()}`
-        : carsEndpoint;
-
-    const response = await fetch(requestUrl);
-    if (!response.ok) {
-        throw new Error(`Failed to fetch cars: ${response.status}`);
-    }
-
-    return response.json();
 }
 
 async function initializeCarsPage() {
@@ -103,7 +90,7 @@ async function initializeCarsPage() {
     }
 }
 
-applyFiltersButton.addEventListener("click", async () => {
+applyFiltersButton.addEventListener("click", () => {
     try {
         const filters = {
             make: makeSelect.value.trim(),
@@ -117,12 +104,11 @@ applyFiltersButton.addEventListener("click", async () => {
             return;
         }
 
-        const filteredCars = await fetchCars(filters);
-
+        const filteredCars = applyFilters(filters);
         renderCars(filteredCars);
     } catch (error) {
         console.error("Error applying filters:", error);
-        showError("Unable to apply filters. Make sure the backend server is running on port 8080.");
+        showError("Unable to apply filters.");
     }
 });
 

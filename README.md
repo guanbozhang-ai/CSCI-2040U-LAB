@@ -1,141 +1,178 @@
-# Car Dealership Recommendation System
-### CSCI-2040U-LAB
+markdown# Car Dealership Recommendation System
 
-## Project Overview
-The Car Dealership Recommendation System helps customers find vehicles that match their preferences.  
-Users complete a survey about their budget, vehicle type, and other preferences. The system then recommends vehicles that best fit those answers.
+**Team: Git It Done**
 
-This project demonstrates the development of a **Minimum Viable Product (MVP)** during Iteration 1 using an Agile workflow and Kanban task management.
+A Java-based web application that matches users to cars through a survey-driven recommendation engine. Users answer questions about their ideal car preferences and the system computes the best matches from the inventory using a weighted Euclidean distance algorithm.
 
 ---
 
-# Minimum Viable Product (MVP)
+## Features
 
-The MVP demonstrates the core functionality of the system.
-
-### Current Features
-- Car matching survey for users
-- Recommendation logic that matches users to cars
-- Display of recommended vehicles
-- Basic vehicle data for testing recommendations
-
-The goal of the MVP is to demonstrate the core recommendation workflow before expanding the system in later iterations.
+- **Survey-based car matching** — users input preferences for price, horsepower, mileage, seating, fuel economy, and year, each with an importance weight
+- **16-predicate filter system** — filter inventory by make, body type, price, mileage, horsepower, fuel type, transmission, drivetrain, seating, cylinders, gears, and more
+- **Euclidean distance matching engine** — scores every car in the inventory against user preferences and returns the top N closest matches
+- **REST API** — HTTP server exposing `/api/match` (POST) for survey matching
+- **Web frontend** — connected to the backend API, displays survey form and ranked results
+- **JSON persistence** — car inventory stored and loaded from `cars.json` with no external libraries
+- **JUnit 5 test suite** — automated unit, integration, and system tests
 
 ---
 
-# Product Backlog
-
-| Title | Estimate | Priority |
-|------|---------|---------|
-| Create car matching survey | 10h | Must Have |
-| Match users to cars based on survey answers | 12h | Must Have |
-| Display recommended cars | 8h | Must Have |
-| Show detailed car pages | 6h | Must Have |
-| Admin can add/edit/remove listings | 10h | Must Have |
-| Show car listings with filters | 8h | Should Have |
-| Save/Favorite cars | 5h | Should Have |
-| Book a test drive | 6h | Should Have |
-| Customer reviews of sellers | 5h | Nice to Have |
-
----
-
-# Workflow Columns
-
-- **Backlog** – All stories not planned for the current iteration  
-- **To Do** – Stories planned for the current 2-week iteration  
-- **In Progress** – Stories currently being developed  
-- **In Testing** – Stories being tested  
-- **Done** – Completed stories  
-
----
-
-# Iteration 1 Kanban Board
-
-| Backlog | To Do | In Progress | In Testing | Done |
-|-------|------|-------------|-----------|------|
-| Admin can add/edit/remove listings | Show detailed car pages | Match users to cars based on survey answers | Display recommended cars | Create car matching survey |
-| Show car listings with filters | Save/Favorite cars |  |  |  |
-| Book a test drive |  |  |  |  |
-| Customer reviews of sellers |  |  |  |  |
-
----
-
-# How the Workflow Works
-
-1. All user stories begin in the **Backlog**.
-2. At the start of each **2-week iteration**, selected stories move to **To Do**.
-3. When development begins, they move to **In Progress**.
-4. After development is completed, they move to **In Testing**.
-5. Once testing is successful, they move to **Done**.
-
-This process helps the team track development progress and manage tasks efficiently.
-
----
-
-# Repository Structure
-
-```
+## Project Structure
 Car-Dealership-Recommendation-System
 │
 ├── src
 │   ├── main
 │   │   ├── java
-│   │   │   ├── model
-│   │   │   ├── controller
-│   │   │   └── view
+│   │   │   ├── API.java                  — HTTP server, CORS, JSON conversion layer
+│   │   │   ├── AttributeFormulas.java    — scoring formulas (cost, sportiness, mileage, seating, economy, recency)
+│   │   │   ├── Car.java                  — car data model, toJson(), fromJson()
+│   │   │   ├── CarFilter.java            — 16 composable filter predicates
+│   │   │   ├── CarFilterRunner.java      — applies filter predicates to inventory
+│   │   │   ├── CarStock.java             — inventory management, findBestMatch()
+│   │   │   ├── CarStorage.java           — load/save cars.json
+│   │   │   ├── FilterDemo.java           — CLI demo for filter system
+│   │   │   ├── JSONHelper.java           — JSON parsing utilities
+│   │   │   ├── MatchingDemo.java         — CLI demo for matching system
+│   │   │   ├── SurveyAPI.java            — survey matching logic
+│   │   │   ├── User.java                 — user model, preference survey, match()
+│   │   │   └── UserAttributeMap.java     — stores user preference values and importance weights
+│   │   └── resources
+│   │       └── static
+│   │           └── cars.json             — car inventory data
+│   └── test
+│       └── java
+│           ├── TestAttributeFormulas.java
+│           ├── TestCar.java
+│           ├── TestJSON.java
+│           └── TestUser.java
 │
-├── docs
-│   └── project documentation
+├── testserver
+│   └── TestServer.java
 │
+├── pom.xml
 └── README.md
-```
 
 ---
 
-# How to Run the Project
+## How to Run
 
-1. Clone the repository
+### Prerequisites
+- Java 17 or higher
+- Maven
 
-```
+### 1. Clone the repository
 git clone https://github.com/your-repository-link
-```
+cd Car-Dealership-Recommendation-System
 
-2. Open the project in your preferred IDE (IntelliJ, Eclipse, or VS Code).
+### 2. Build the project
+mvn clean compile
 
-3. Navigate to the main application file.
+### 3. Start the backend server
+mvn exec:java -Dexec.mainClass="API"
+Server will start at `http://localhost:8080`
 
-4. Run the program to start the application.
+### 4. Open the frontend
+Open `src/main/resources/static/index.html` in your browser.
 
----
-
-# Challenges Encountered
-
-During Iteration 1, several challenges were encountered:
-
-- Implementing the car recommendation logic
-- Integrating the user interface with the filtering system
-- Managing collaboration and version control between team members
-
-These challenges were addressed by dividing tasks among team members and using GitHub to manage code changes.
+### 5. Run the tests
+mvn test
 
 ---
 
-# Next Steps (Iteration 2)
+## API Reference
 
-Planned improvements include:
+### POST `/api/match`
+Accepts a survey JSON body and returns the best matching cars from the inventory.
 
-- Expanding the vehicle database
-- Adding more filtering options
-- Improving recommendation accuracy
-- Enhancing the user interface
-- Implementing additional user stories
+**Request body:**
+{
+"price": 30000,
+"priceImportance": 4,
+"horsepower": 200,
+"powerImportance": 3,
+"mileage": 50000,
+"mileageImportance": 2,
+"seats": 5,
+"seatImportance": 3,
+"economy": 8.0,
+"economyImportance": 2,
+"year": 2020,
+"yearImportance": 3,
+"makes": ["Toyota", "Honda"],
+"bodyType": "SUV",
+"fuelType": "Gas",
+"transmission": "Automatic",
+"count": 3
+}
 
-The goal of the next iteration is to build on the MVP and move toward a more complete system.
+**Response:** JSON object containing the top N matched car objects.
 
 ---
 
-# Team
+## How the Matching Works
 
-**GIT-IT-DONE Meganet**
+1. User submits survey preferences (value + importance weight per attribute)
+2. `API.java` converts the frontend JSON format to the backend attribute format
+3. `User.fromJson()` builds a `UserAttributeMap` with 6 scored attributes: `cost`, `sportiness`, `mileage`, `seating`, `economy`, `recency`
+4. Each attribute is normalized using `AttributeFormulas` (e.g. `cost(40000) = 2.0`, capped at 5.0)
+5. `CarStock.findBestMatch()` computes the Euclidean distance between the user's attribute vector and every car in inventory
+6. The N cars with the smallest distance are returned as the best matches
 
-Team members contributed to design, development, testing, and documentation during Iteration 1.
+---
+
+## Testing
+
+Tests are located in `src/test/java/` and run with `mvn test`.
+
+| Test Class | Coverage | Type |
+|---|---|---|
+| TestAttributeFormulas.java | All 6 scoring formulas including cap behaviour | Clear Box |
+| TestCar.java | Constructor validation, toJson(), fromJson() | Clear Box |
+| TestJSON.java | JSON round-trip (Car → JSON → Car) | Translucent Box |
+| TestUser.java | User.fromJson(), UserAttributeMap construction | Translucent Box |
+
+---
+
+## Product Backlog
+
+| Title | Estimate | Priority | Status |
+|---|---|---|---|
+| Create car matching survey | 10h | Must Have | ✅ Done |
+| Match users to cars based on survey | 12h | Must Have | ✅ Done |
+| Display recommended cars | 8h | Must Have | ✅ Done |
+| Show car listings with filters | 8h | Should Have | ✅ Done |
+| Show detailed car pages | 6h | Must Have | 🔄 In Progress |
+| Admin can add/edit/remove listings | 10h | Must Have | 🔄 In Progress |
+| Save/Favourite cars | 5h | Should Have | 📋 Backlog |
+| Book a test drive | 6h | Should Have | 📋 Backlog |
+| Customer reviews of sellers | 5h | Nice to Have | 📋 Backlog |
+
+---
+
+## Workflow
+
+All user stories follow this process:
+
+**Backlog → To Do → In Progress → In Testing → Done**
+
+Each iteration is 2 weeks. Stories are selected from the backlog at the start of each iteration and move through the board as development progresses.
+
+---
+
+## Challenges & Solutions
+
+| Challenge | Solution |
+|---|---|
+| Frontend/backend JSON field mismatch caused body type to never reach the matching engine | Added `API.java` conversion layer to remap all frontend fields to backend format |
+| Copy-paste bug in `preferredBodyTypesSurvey()` added body types to the wrong list | Fixed by changing `preferredMakes.add()` to `preferredBodyTypes.add()` |
+| Building JSON parsing with no external libraries | Hand-rolled `JSONHelper.java` with extractString, extractInt, extractDouble, extractStringList |
+| Managing collaboration and version control | Used GitHub branches and pull requests throughout all iterations |
+
+---
+
+## Team
+
+**Git It Done**
+
+Contributions across design, development, testing, and documentation throughout all 3 iterations.

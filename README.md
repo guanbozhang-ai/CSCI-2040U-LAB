@@ -60,40 +60,7 @@ Car-Dealership-Recommendation-System
 
 ## How to Run
 
-### Prerequisites
-- Java 17 or higher
-- Maven
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-repository-link
-cd Car-Dealership-Recommendation-System
-```
-
-### 2. Build the project
-
-```bash
-mvn clean compile
-```
-
-### 3. Start the backend server
-
-```bash
-mvn exec:java -Dexec.mainClass="API"
-```
-
-Server will start at `http://localhost:8080`
-
-### 4. Open the frontend
-
-Open `src/main/resources/static/index.html` in your browser.
-
-### 5. Run the tests
-
-```bash
-mvn test
-```
+A deployed version of the project can be found at https://mellow-granita-f4b6e0.netlify.app/.
 
 ---
 

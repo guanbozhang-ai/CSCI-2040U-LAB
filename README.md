@@ -1,4 +1,4 @@
-markdown# Car Dealership Recommendation System
+# Car Dealership Recommendation System
 
 **Team: Git It Done**
 
@@ -19,6 +19,8 @@ A Java-based web application that matches users to cars through a survey-driven 
 ---
 
 ## Project Structure
+
+```
 Car-Dealership-Recommendation-System
 │
 ├── src
@@ -52,6 +54,7 @@ Car-Dealership-Recommendation-System
 │
 ├── pom.xml
 └── README.md
+```
 
 ---
 
@@ -62,49 +65,67 @@ Car-Dealership-Recommendation-System
 - Maven
 
 ### 1. Clone the repository
+
+```bash
 git clone https://github.com/your-repository-link
 cd Car-Dealership-Recommendation-System
+```
 
 ### 2. Build the project
+
+```bash
 mvn clean compile
+```
 
 ### 3. Start the backend server
+
+```bash
 mvn exec:java -Dexec.mainClass="API"
+```
+
 Server will start at `http://localhost:8080`
 
 ### 4. Open the frontend
+
 Open `src/main/resources/static/index.html` in your browser.
 
 ### 5. Run the tests
+
+```bash
 mvn test
+```
 
 ---
 
 ## API Reference
 
 ### POST `/api/match`
+
 Accepts a survey JSON body and returns the best matching cars from the inventory.
 
 **Request body:**
+
+```json
 {
-"price": 30000,
-"priceImportance": 4,
-"horsepower": 200,
-"powerImportance": 3,
-"mileage": 50000,
-"mileageImportance": 2,
-"seats": 5,
-"seatImportance": 3,
-"economy": 8.0,
-"economyImportance": 2,
-"year": 2020,
-"yearImportance": 3,
-"makes": ["Toyota", "Honda"],
-"bodyType": "SUV",
-"fuelType": "Gas",
-"transmission": "Automatic",
-"count": 3
+  "price": 30000,
+  "priceImportance": 4,
+  "horsepower": 200,
+  "powerImportance": 3,
+  "mileage": 50000,
+  "mileageImportance": 2,
+  "seats": 5,
+  "seatImportance": 3,
+  "economy": 8.0,
+  "economyImportance": 2,
+  "year": 2020,
+  "yearImportance": 3,
+  "makes": ["Toyota", "Honda"],
+  "bodyType": "SUV",
+  "fuelType": "Gas",
+  "transmission": "Automatic",
+  "count": 3
 }
+```
 
 **Response:** JSON object containing the top N matched car objects.
 
